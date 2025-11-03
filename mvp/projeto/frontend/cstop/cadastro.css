@@ -2,4 +2,244 @@
  Cuidado com o que você irá mexer
  */
  
+  /**
+ Cuidado com o que você irá mexer
+ */
+ 
+  /**
+ Cuidado com o que você irá mexer
+ */
+ 
+  :root {
+  --primary-color: #0575e6;
+  --primary-gradient: linear-gradient(180deg, #0575e6 0%, #02298a 84.79%, #021b79 100%);
+  --white-color: #ffffff;
+  --text-dark: #333333;
+  --border-light: #eeeeee;
+  --font-main: 'Poppins', sans-serif;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-main);
+  background-color: var(--white-color);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+
+  #register-page {
+    width: 100%;
+  }
+
+  .register-container {
+    display: flex;
+    min-height: 100vh;
+    max-width: 1440px;
+    margin: 0 auto;
+    background-color: var(--white-color);
+    overflow: hidden;
+  }
+
+  .info-panel {
+    flex: 1;
+    background: var(--primary-gradient);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    color: var(--white-color);
+    overflow: hidden;
+  }
+
+  .info-panel__bg-art {
+    position: absolute;
+    left: -231px;
+    bottom: -283px;
+    width: 738px;
+    height: 683px;
+    pointer-events: none;
+  }
   
+  .info-panel__bg-art2 {
+    position: absolute;
+    left: -231px;
+    bottom: -83px;
+    width: 638px;
+    height: 443px;
+    pointer-events: none;
+  }
+  .info-panel__content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 23px;
+    width: 100%;
+    max-width: 410px;
+  }
+
+  .info-panel__content h1 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 60px;
+    margin: 0;
+  }
+
+  .info-panel__content p {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 27px;
+    margin: 0;
+  }
+
+  .btn {
+    font-family: var(--font-main);
+    border-radius: 30px;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    border: none;
+    font-size: 14px;
+    line-height: 21px;
+    font-weight: 400;
+  }
+
+  .btn--secondary {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    padding: 8px 30px;
+    display: inline-block;
+  }
+
+  .form-panel {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+  }
+
+  .register-form {
+    width: 100%;
+    max-width: 307px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .register-form__header {
+    margin-bottom: 20px;
+  }
+
+  .register-form__header h2 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 39px;
+    color: var(--text-dark);
+    margin: 0 0 3px 0;
+  }
+
+  .register__header p {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 27px;
+    color: var(--text-dark);
+    margin: 0;
+  }
+
+  .form-group {
+    position: relative;
+    margin-bottom: 16px;
+  }
+
+  .form-group__icon-wrapper {
+    position: absolute;
+    left: 26px;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.3;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+  }
+  
+  .form-group__icon {
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  .form-group input {
+    width: 100%;
+    height: 60px;
+    padding: 18px 26px 18px 62px;
+    border: 1px solid var(--border-light);
+    border-radius: 30px;
+    font-size: 14px;
+    font-family: var(--font-main);
+    color: var(--text-dark);
+  }
+
+  .form-group input::placeholder {
+    color: var(--text-dark);
+    opacity: 0.3;
+  }
+
+  .btn--primary {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    padding: 18px 26px;
+    margin-top: 16px;
+    height: 57px;
+  }
+
+  .forgot-password-link {
+    color: var(--text-dark);
+    opacity: 0.7;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: center;
+    text-decoration: none;
+    margin-top: 17px;
+    display: block;
+  }
+
+  @media (max-width: 992px) {
+    .login-container {
+      flex-direction: column;
+    }
+
+    .info-panel {
+      flex: none;
+      min-height: 350px;
+      text-align: center;
+    }
+
+    .info-panel__content {
+      align-items: center;
+    }
+
+    .info-panel__bg-art {
+      width: 80%;
+      max-width: 400px;
+      height: auto;
+      left: 50%;
+      bottom: -25%;
+      transform: translateX(-50%);
+    }
+
+    .form-panel {
+      padding: 60px 20px;
+    }
+  }
