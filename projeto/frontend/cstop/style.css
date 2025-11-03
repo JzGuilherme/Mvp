@@ -1,0 +1,183 @@
+
+/**
+ CUIDADO COM O QUE VOCÊ IRÁ MEXER 
+ */
+
+
+/* --- RAÍZ DO PROJETO (Cores e Fontes do Guia) --- */
+:root {
+    --azul: #0078B7;    /* Cor principal (Confiança) */
+    --verde: #4CAF50;   /* Cor de ação (Sucesso) */
+    --fundo: #F5F5F5;   /* Fundo do painel do formulário */
+    --branco: #FFFFFF;
+    --texto-principal: #1A1A1A;
+    --texto-secundario: #666666;
+    
+    --fonte-titulo: 'Poppins', sans-serif;
+    --fonte-corpo: 'Roboto', sans-serif;
+}
+/**
+ Cuidado com o que você irá mexer
+ */
+
+
+/* --- RESET BÁSICO --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--fonte-corpo);
+    background-color: var(--fundo);
+    color: var(--texto-principal);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* --- CONTAINER DE AUTENTICAÇÃO (Layout 2 Colunas) --- */
+.auth-container {
+    display: flex;
+    width: 100%;
+    max-width: 1000px;
+    min-height: 600px;
+    background-color: var(--branco);
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden; /* Garante que os cantos arredondados sejam aplicados */
+}
+
+/* --- 1. PAINEL DA MARCA (Branding) --- */
+.branding-panel {
+    width: 45%;
+    background-color: var(--azul);
+    color: var(--branco);
+    padding: 60px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.branding-panel h1 {
+    font-family: var(--fonte-titulo);
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+
+.branding-panel p {
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+/* --- 2. PAINEL DO FORMULÁRIO --- */
+.form-panel {
+    width: 55%;
+    padding: 60px 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.form-panel h2 {
+    font-family: var(--fonte-titulo);
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--texto-principal);
+    margin-bottom: 32px;
+}
+
+/* --- GRUPO DO FORMULÁRIO (Label + Input) --- */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-family: var(--fonte-corpo);
+    font-weight: 500;
+    font-size: 14px;
+    color: var(--texto-secundario);
+    margin-bottom: 8px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 14px 16px;
+    font-size: 16px;
+    font-family: var(--fonte-corpo);
+    border: 1px solid #D9D9D9;
+    border-radius: 8px;
+    background-color: var(--fundo);
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--azul);
+    box-shadow: 0 0 0 3px rgba(0, 120, 183, 0.2);
+}
+
+/* --- BOTÃO PRINCIPAL (Cor Verde) --- */
+.btn-primary {
+    width: 100%;
+    padding: 16px;
+    font-family: var(--fonte-titulo);
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--branco);
+    background-color: var(--verde); /* Cor de Ação */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 16px;
+}
+
+.btn-primary:hover {
+    background-color: #3e8e41; /* Verde um pouco mais escuro */
+}
+
+/* --- LINK DE AUTENTICAÇÃO (Ir para Cadastro/Login) --- */
+.auth-link {
+    text-align: center;
+    margin-top: 24px;
+    font-size: 14px;
+    color: var(--texto-secundario);
+}
+
+.auth-link a {
+    color: var(--azul);
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.auth-link a:hover {
+    text-decoration: underline;
+}
+
+/* --- RESPONSIVIDADE (Celular) --- */
+@media (max-width: 800px) {
+    .auth-container {
+        flex-direction: column; /* Empilha os painéis */
+        min-height: 100vh;
+        max-width: 100%;
+        border-radius: 0;
+    }
+
+    .branding-panel,
+    .form-panel {
+        width: 100%;
+    }
+
+    .branding-panel {
+        padding: 40px 24px;
+        text-align: center;
+    }
+
+    .form-panel {
+        padding: 40px 24px;
+    }
+}
