@@ -1,0 +1,84 @@
+/**
+ Cuidado com o que você irá mexer
+ */
+
+/* ===================================================
+   ESTILOS DA PÁGINA DE IMC (Tela 6)
+   =================================================== */
+
+.imc-calculator-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2 colunas */
+    gap: 32px;
+    background-color: var(--branco);
+    border: 1px solid var(--verde-secundario);
+    border-radius: 16px;
+    box-shadow: var(--sombra-card);
+    overflow: hidden; /* Garante as bordas arredondadas */
+}
+
+/* Painel da Esquerda (Formulário) */
+.imc-form-panel {
+    padding: 40px;
+}
+
+.imc-form-panel h3 {
+    font-family: var(--fonte-titulo);
+    font-size: 24px;
+    margin-bottom: 24px;
+}
+
+/* Painel da Direita (Resultado) */
+.imc-result-panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--verde-secundario);
+    padding: 40px;
+    text-align: center;
+}
+
+/* Escondido por padrão, só aparece com o JS */
+#imc-result {
+    display: none; 
+}
+
+#imc-result p {
+    font-size: 16px;
+    color: var(--texto-secundario);
+}
+
+#imc-result #imc-value {
+    font-family: var(--fonte-titulo);
+    font-size: 60px;
+    font-weight: 700;
+    color: var(--verde-principal);
+    line-height: 1.2;
+    margin: 8px 0;
+}
+
+#imc-result #imc-status {
+    font-family: var(--fonte-titulo);
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+
+/* Classes de cor para o status */
+.status-magreza { color: #f57f17; }
+.status-normal { color: var(--verde-principal); }
+.status-sobrepeso { color: #f57f17; }
+.status-obesidade { color: #D32F2F; }
+
+#imc-result #imc-message {
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* Responsividade para a calculadora */
+@media (max-width: 800px) {
+    .imc-calculator-container {
+        grid-template-columns: 1fr; /* 1 coluna em celular */
+    }
+}

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ManUp - Notícias e Conteúdo</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+  <link rel="stylesheet" href="/mvp/projeto/frontend/cstop/artigos.css" </head>
+
+<body>
+
+  <div class="app-container">
+
+    <header class="app-header">
+      <div class="logo">
+        ManUp
+      </div>
+      <div class="user-menu">
+        <span>Olá, <strong>João!</strong></span>
+        <a href="login.html" class="btn-logout">Sair</a>
+      </div>
+    </header>
+
+    <main class="app-content">
+
+      <section class="page-header">
+        <h2>Notícias e Conteúdo</h2>
+      </section>
+
+      <div class="topic-filters">
+        <button class="filter-btn active">Todos</button>
+        <button class="filter-btn">Nutrição</button>
+        <button class="filter-btn">Saúde Mental</button>
+      </div>
+
+      <section class="article-list-full" id="article-list-container">
+
+        <div class="article-card-full">
+          <div class="article-image-full" style="background-image: url('https://source.unsplash.com/random/800x400?nutrition')"></div>
+          <div class="article-content-full">
+            <span class="article-topic">Nutrição</span>
+            <h3>A importância da Vitamina D para a saúde masculina</h3>
+            <p>A vitamina D desempenha um papel crucial na regulação do sistema imunológico e na saúde óssea. Muitos homens têm deficiência sem saber...</p>
+            <a href="#" class="btn-primary-outline">Ler Mais</a>
+          </div>
+        </div>
+
+        <div class="article-card-full">
+          <div class="article-image-full" style="background-image: url('https://imgs.search.brave.com/2ujEs4JPYTl6V7MQl4bfK-FyYmvtwnz_zPxFDvnRUhE/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9ob3Nw/aXRhbHNhbnRhbW9u/aWNhLmNvbS5ici93/cC1jb250ZW50L3Vw/bG9hZHMvMjAyMy8x/Mi9lc3RyZXNzZS1l/LXNhdWRlLW1lbnRh/bC1kb3MtaG9tZW5z/LXNpdGUuanBn')"></div>
+          <div class="article-content-full">
+            <span class="article-topic">Saúde Mental</span>
+            <h3>Quebrando o Tabu: Por que homens devem falar sobre ansiedade</h3>
+            <p>A ansiedade não é um sinal de fraqueza. Entenda os sintomas e veja por que buscar ajuda é um ato de força e autocuidado...</p>
+            <a href="#" class="btn-primary-outline">Ler Mais</a>
+          </div>
+        </div>
+
+      </section>
+    </main>
+
+  </div>
+  <footer class="app-footer">
+    <div class="footer-content">
+      <p>&copy; 2025 ManUp. Um projeto MVP Saúde do Homem - UNINASSAU.</p>
+    </div>
+  </footer>
+
+  <script src="/scripts/noticias.js"></script>
+
+</body>
+
+</html>
