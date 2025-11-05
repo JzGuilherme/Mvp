@@ -35,11 +35,24 @@
 
         <div class="form-group">
           <label for="senha">Senha</label>
-          <input type="password" id="senha" name="senha" placeholder="••••••••" required>
+          <input type="password" id="senha" name="senha" placeholder="••••••••" required id="password">
         </div>
 
+        <script>
+          let eyeicon = document.getElementById("eyeicon")
+          let password = document.getElementById("senha")
+          eyeicon.onclick = function(){
+            if(paassword.type == "password"){
+              password.type = "text";
+              password.type = "eye-open.png";
+            }else {
+              password.type = "password";
+               password.type = "eye-close.png";
+            }
+          }
+           </script>
         <button type="submit" class="btn-primary">Entrar</button>
-
+       
       </form>
 
       <p class="auth-link">
