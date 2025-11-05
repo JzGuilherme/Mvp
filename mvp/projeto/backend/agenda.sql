@@ -6,7 +6,7 @@ CREATE TABLE agendamentos (
   data_agendamento DATETIME NOT NULL,
   observacoes TEXT NULL,
   
-  status VARCHAR(50) NOT NULL DEFAULT 'Pendente', 
+  status VARCHAR(100) NOT NULL DEFAULT 'Pendente', 
   data_criacao DATETIME DEFAULT CURRENT_TIMESTAMP,
   
   FOREIGN KEY (id_usuario) REFERENCES usuarios(id) ON DELETE CASCADE
