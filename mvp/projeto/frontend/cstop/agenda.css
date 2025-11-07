@@ -1,5 +1,11 @@
 /**
- Cuidado com o que você irá mexer
+ * @file agenda.css
+ * @description Estilos para a página de Agenda (Tela 4) e
+ * o modal de "Adicionar Compromisso".
+ * @author Equipe ManUp (Assistido por Alfred)
+ *
+ * Depende de variáveis CSS (ex: var(--verde-principal))
+ * definidas no arquivo CSS mestre (ex: style.css).
  */
 
 /* ===================================================
@@ -19,14 +25,14 @@
     font-size: 28px;
     font-weight: 600;
     color: var(--texto-principal);
-    margin-bottom: 0; /* Remove a margem do h2 padrão */
+    margin-bottom: 0;
 }
 
 /* --- Botão Primário (Verde) --- */
 .btn-primary {
     display: flex;
     align-items: center;
-    gap: 8px; /* Espaço entre o ícone e o texto */
+    gap: 8px;
     font-family: var(--fonte-titulo);
     font-weight: 600;
     font-size: 16px;
@@ -40,7 +46,7 @@
 }
 
 .btn-primary:hover {
-    background-color: #008a80; /* Tom de verde mais escuro */
+    background-color: #008a80;
 }
 
 /* --- Lista de Itens da Agenda --- */
@@ -83,7 +89,7 @@
 }
 
 .agenda-item p .material-symbols-outlined {
-    font-size: 18px; /* Ícone de calendário menor */
+    font-size: 18px;
 }
 
 .item-status {
@@ -107,15 +113,13 @@
 /* --- Fundo Escuro (Overlay) --- */
 .modal-overlay {
     display: none; /* ESCONDIDO POR PADRÃO */
-    position: fixed; /* Fica por cima de tudo */
+    position: fixed;
     z-index: 1000;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.6); /* Fundo preto semi-transparente */
-    
-    /* Centraliza o conteúdo */
+    background-color: rgba(0, 0, 0, 0.6);
     justify-content: center;
     align-items: center;
 }
@@ -128,7 +132,7 @@
     border-radius: 16px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     width: 100%;
-    max-width: 500px; /* Largura máxima do pop-up */
+    max-width: 500px;
 }
 
 .modal-content h3 {
@@ -185,8 +189,149 @@
     box-shadow: 0 0 0 3px rgba(0, 167, 157, 0.2);
 }
 
-/* Botão de salvar (ocupa 100% da largura) */
 #agenda-form .btn-primary {
     width: 100%;
     margin-top: 16px;
+}
+
+/* ===================================================
+   AÇÕES DOS ITENS (Concluir, Desfazer, Excluir)
+   =================================================== */
+
+/* Container para os botões de ação */
+.item-actions {
+    display: flex;
+    gap: 8px;
+}
+
+/* Estilo base para os botões de ação */
+.btn-action {
+    background-color: var(--fundo);
+    border: 1px solid var(--verde-secundario);
+    color: var(--texto-secundario);
+    padding: 8px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.btn-action .material-symbols-outlined {
+    font-size: 20px;
+}
+
+/* Estilo (hover) do botão Concluir (Verde) */
+.btn-action.btn-complete:hover {
+    background-color: var(--verde-secundario);
+    color: var(--verde-principal);
+    border-color: var(--verde-principal);
+}
+
+/* Estilo (hover) do botão Excluir (Vermelho) */
+.btn-action.btn-delete:hover {
+    background-color: #FFF0F0;
+    color: #D32F2F;
+    border-color: #D32F2F;
+}
+
+/* Estilo (base e hover) do botão 'Desfazer' (Amarelo) */
+.btn-action.btn-undo {
+    background-color: #FFF8E1;
+    color: #F57F17;
+    border-color: #FDE68A;
+}
+
+.btn-action.btn-undo:hover {
+    background-color: #FDE68A;
+    border-color: #F57F17;
+}
+
+/* --- Estilos de Status e Visibilidade --- */
+
+/* Estilo do status 'Concluído' */
+.agenda-item.completed .item-status {
+    background-color: #E8F5E9; /* Verde claro */
+    color: #2E7D32; /* Verde escuro */
+}
+
+/* Estiliza o card inteiro quando concluído */
+.agenda-item.completed {
+    background-color: #F9F9F9;
+    border-color: #E0E0E0;
+}
+
+/* Estiliza o texto do item concluído */
+.agenda-item.completed .item-info h3 {
+    color: var(--texto-secundario);
+    text-decoration: line-through;
+}
+
+/* --- LÓGICA DE VISIBILIDADE DOS BOTÕES --- */
+
+/* 1. Por padrão, esconda o botão 'Desfazer' */
+.agenda-item .btn-undo {
+    display: none;
+}
+
+/* 2. Em estado PENDENTE: mostre 'Concluir', esconda 'Desfazer' */
+.agenda-item.pending .btn-complete {
+    display: flex;
+}
+.agenda-item.pending .btn-undo {
+    display: none;
+}
+
+/* 3. Em estado CONCLUÍDO: esconda 'Concluir', mostre 'Desfazer' */
+.agenda-item.completed .btn-complete {
+    display: none;
+}
+.agenda-item.completed .btn-undo {
+    display: flex;
+}
+
+
+/* ===================================================
+ * LAYOUT STICKY FOOTER (Global)
+ * 
+ * ===================================================
+ *
+ * Corrige o layout para que o rodapé (footer)
+ * permaneça na parte inferior da tela, mesmo em páginas curtas.
+ */
+
+/* 1. Configura o Body */
+body {
+    display: flex;
+    flex-direction: column; /* Organiza os filhos em coluna */
+    min-height: 100vh;     /* Altura mínima de 100% da tela */
+    margin: 0;
+    background-color: var(--fundo); /* Cor de fundo da página */
+}
+
+/* 2. Configura o Container Principal */
+.app-container {
+    flex-grow: 1; /* Permite que este elemento "cresça" e empurre o rodapé */
+}
+
+/* 3. Estilo do Rodapé */
+.app-footer {
+    width: 100%;
+    background-color: var(--branco);
+    border-top: 1px solid var(--verde-secundario);
+    padding: 24px 0;
+    text-align: center;
+    color: var(--texto-secundario);
+    font-size: 14px;
+    
+    /* Impede que o rodapé encolha */
+    flex-shrink: 0; 
+}
+
+/* 4. Conteúdo do Rodapé */
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
 }
