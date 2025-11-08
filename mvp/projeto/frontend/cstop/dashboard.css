@@ -1,16 +1,17 @@
-/**
- Cuidado com o que você irá mexer
- */
 
-/* --- RAÍZ DO PROJETO (Cores do modelo do figma e as fontes, porque o peão tem que manjar + Fontes) --- */
+
+/* --- 1. RAÍZ (Nossas Variáveis de Design) --- */
 :root {
-    /* Cores adaptadas do seu modelo DoctorCare */
-    --verde-principal: #00A79D;
-    --verde-secundario: #DCEFE7;
-    --fundo-bege: #FFFBF7;
-    --texto-principal: #292D32;
-    --texto-secundario: #555555;
+    /* Cores (Estilo DoctorCare / Saúde) */
+    --cor-principal: #0078B7;  /* Azul do seu guia original */
+    --cor-secundaria: #4CAF50; /* Verde do seu guia original */
+    --fundo-claro: #F8F9FA;
+    --fundo-bege: #FFFBF7; /* Um tom suave para o fundo */
     --branco: #FFFFFF;
+    --borda: #E5E7EB;
+    
+    --texto-principal: #1A1A1A;
+    --texto-secundario: #6B7280;
     
     --fonte-titulo: 'Poppins', sans-serif;
     --fonte-corpo: 'Roboto', sans-serif;
@@ -18,7 +19,9 @@
     --sombra-card: 0 4px 20px rgba(0, 0, 0, 0.05);
 }
 
-/* --- RESET BÁSICO --- */
+/* --- 2. (O Esqueleto do Site) --- */
+
+/* Reset Básico */
 * {
     margin: 0;
     padding: 0;
@@ -27,7 +30,7 @@
 
 body {
     font-family: var(--fonte-corpo);
-    background-color: var(--fundo-bege); /* Fundo bege do modelo */
+    background-color: var(--fundo-bege);
     color: var(--texto-principal);
     line-height: 1.6;
 }
@@ -37,34 +40,33 @@ a {
     color: inherit;
 }
 
-/* --- CONTAINER PRINCIPAL DO APP --- */
+/* O Container que centraliza o conteúdo */
 .app-container {
-    max-width: 1200px;
+    max-width: 1100px;
     margin: 0 auto;
     padding: 0 24px;
 }
 
-/* --- CABEÇALHO --- */
+/* O Cabeçalho (Header) */
 .app-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 24px 0;
-    border-bottom: 1px solid var(--verde-secundario);
+    border-bottom: 1px solid var(--borda);
 }
 
 .app-header .logo {
     font-family: var(--fonte-titulo);
     font-size: 24px;
     font-weight: 700;
-    color: var(--verde-principal);
+    color: var(--cor-principal);
 }
 
 .user-menu {
     display: flex;
     align-items: center;
     gap: 16px;
-    font-family: var(--fonte-corpo);
     font-weight: 500;
 }
 
@@ -72,131 +74,129 @@ a {
     font-family: var(--fonte-titulo);
     font-weight: 600;
     font-size: 14px;
-    background-color: var(--verde-secundario);
-    color: var(--verde-principal);
+    background-color: #F0F7FF;
+    color: var(--cor-principal);
     padding: 8px 16px;
     border-radius: 8px;
     transition: all 0.3s ease;
 }
-
 .btn-logout:hover {
-    background-color: var(--verde-principal);
+    background-color: var(--cor-principal);
     color: var(--branco);
 }
 
-/* --- CONTEÚDO PRINCIPAL --- */
-.app-content {
-    padding: 40px 0;
+/* O Rodapé (Footer) */
+.app-footer {
+    background-color: var(--cor-principal);
+    color: var(--branco); 
+    padding: 32px 24px; 
+    margin-top: 60px; 
+}
+.footer-content {
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 14px;
 }
 
-.app-content h2 {
+/* O Título de cada Página */
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 40px 0 32px 0;
+}
+.page-header h2 {
     font-family: var(--fonte-titulo);
     font-size: 28px;
     font-weight: 600;
-    color: var(--texto-principal);
-    margin-bottom: 24px;
 }
 
-/* --- SEÇÃO: ACESSO RÁPIDO --- */
+/* --- 3. COMPONENTS (Nossas "Peças de LEGO") --- */
+
+/* Botão Primário (Azul) */
+.btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--fonte-titulo);
+    font-weight: 600;
+    font-size: 16px;
+    background-color: var(--cor-principal);
+    color: var(--branco);
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.btn-primary:hover {
+    background-color: #005A8D;
+}
+
+/* Card de "Acesso Rápido" */
 .card-grid {
     display: grid;
-    /* 4 colunas em desktop, 2 em tablet, 1 em celular */
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 24px;
 }
-
 .card {
     background-color: var(--branco);
-    border: 1px solid var(--verde-secundario);
-    border-radius: 16px; /* Borda arredondada do seu guia */
+    border: 1px solid var(--borda);
+    border-radius: 16px;
     padding: 24px;
     box-shadow: var(--sombra-card);
     transition: all 0.3s ease;
 }
-
 .card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0, 167, 157, 0.1);
+    box-shadow: 0 8px 25px rgba(0, 120, 183, 0.1);
+    border-color: var(--cor-principal);
 }
-
 .card-icon {
     font-size: 40px;
-    color: var(--verde-principal);
+    color: var(--cor-principal);
     margin-bottom: 16px;
 }
-
 .card h3 {
     font-family: var(--fonte-titulo);
     font-size: 20px;
     font-weight: 600;
     margin-bottom: 8px;
 }
-
 .card p {
-    font-family: var(--fonte-corpo);
     font-size: 14px;
     color: var(--texto-secundario);
 }
 
-/* --- SEÇÃO: ARTIGOS RECENTES --- */
-.recent-articles {
-    margin-top: 60px;
-}
+/* --- 4. SECTIONS (Estilos específicos das páginas) --- */
 
-.article-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 24px;
+/* ---- TELA HOME (Dicas) ---- */
+.tips-section {
+    margin-top: 50px;
 }
-
-.article-card {
-    background-color: var(--branco);
-    border-radius: 16px;
-    box-shadow: var(--sombra-card);
-    overflow: hidden; /* Garante que a imagem respeite a borda */
-}
-
-.article-image {
-    height: 200px;
-    background-size: cover;
-    background-position: center;
-}
-
-.article-card h4 {
+.tips-section h3 {
     font-family: var(--fonte-titulo);
-    font-size: 18px;
-    font-weight: 600;
-    padding: 20px 20px 8px 20px;
+    font-size: 22px;
+    margin-bottom: 20px;
 }
-
-.article-card p {
-    font-size: 14px;
-    color: var(--texto-secundario);
-    padding: 0 20px 20px 20px;
+.tip-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background-color: var(--branco);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 16px;
+    box-shadow: var(--sombra-card);
+    border: 1px solid var(--borda);
 }
- /* --- RODAPÉ (A Barra Pintada) --- */
-.app-footer {
-    /* A "Tinta" da barra, usando seu verde principal */
-    background-color: var(--verde-principal);
-    
-    /* A cor do texto dentro da barra */
-    color: var(--branco); 
-    
-    /* A "altura" da barra */
-    padding: 32px 24px; 
-    
-    /* Espaço para separá-lo do conteúdo acima */
-    margin-top: 60px; 
+.tip-item .material-symbols-outlined {
+    font-size: 28px;
+    color: var(--cor-secundaria); /* Verde para as dicas */
 }
-
-/* Este container interno alinha o texto do rodapé
-  com o resto do seu site (os 1200px)
-*/
-.footer-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    text-align: center;
-    font-family: var(--fonte-corpo);
-    font-size: 14px;
+.tip-item p {
+    font-size: 16px;
     font-weight: 500;
+    color: var(--texto-secundario);
 }

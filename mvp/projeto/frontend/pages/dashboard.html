@@ -1,24 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ManUp - Home </title>
+  <title>ManUp: Saúde e Desenvolvimento para Homens</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&
-    family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/mvp/projeto/frontend/cstop/dashboard.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
 
 <body>
+
   <div class="app-container">
+
     <header class="app-header">
-      <div class="logo">
-        ManUp
-      </div>
+      <div class="logo">ManUp</div>
       <div class="user-menu">
         <span>Olá, <strong>João!</strong></span>
         <a href="login.html" class="btn-logout">Sair</a>
@@ -27,62 +27,49 @@
 
     <main class="app-content">
 
-      <section class="quick-access">
-        <h2>Acesso Rápido</h2>
-        <div class="card-grid">
-
-          <a href="agenda.html" class="card">
-            <span class="material-symbols-outlined card-icon">Calendário</span>
-            <h3>Minha Agenda</h3>
-            <p>Gerencie seus exames e consultas.</p>
-          </a>
-
-          <a href="calculadoraimc.html" class="card">
-            <span class="material-symbols-outlined card-icon">Calculadora</span>
-            <h3>Calculadora de IMC</h3>
-            <p>Acompanhe seu índice de massa corporal.</p>
-          </a>
-
-          <a href="artigos.html" class="card">
-            <span class="material-symbols-outlined card-icon">Materiais</span>
-            <h3>Notícias e Conteúdo</h3>
-            <p>Artigos selecionados para sua saúde.</p>
-          </a>
-
-          <a href="apoio.html" class="card">
-            <span class="material-symbols-outlined card-icon">Psicológo</span>
-            <h3>Saúde Mental e Apoio</h3>
-            <p>Dicas de bem-estar e contatos de apoio.</p>
-          </a>
-
-        </div>
+      <section class="page-header">
+        <h2>Seja bem-vindo, João!</h2>
       </section>
 
-      <section class="recent-articles">
-        <h2>Artigos Recentes</h2>
-        <div class="article-list">
+      <section class="card-grid">
 
-          <div class="article-card">
-            <div class="article-image" style="background-image: url('ainda vou botar)"></div>
-            <h4>Problemas digestivos</h4>
-            <p>Veja como a nutrição pode ajudar a regular seu sistema digestivo.</p>
-          </div>
+        <a href="agenda.html" class="card">
+          <span class="material-symbols-outlined card-icon">calendar_month</span>
+          <h3>Minha Agenda</h3>
+          <p>Gerencie seus exames e consultas.</p>
+        </a>
 
-          <div class="article-card">
-            <div class="article-image" style="background-image: url(''ainda vou botar)"></div>
-            <h4>Saúde Hormonal</h4>
-            <p>Exercícios físicos são essenciais para manter o equilíbrio hormonal.</p>
-          </div>
+        <a href="calculadoraimc.html" class="card">
+          <span class="material-symbols-outlined card-icon">calculate</span>
+          <h3>Calculadora de IMC</h3>
+          <p>Acompanhe seu índice de massa corporal.</p>
+        </a>
 
-          <div class="article-card">
-            <div class="article-image" style="background-image: url('aindavoubotarh')"></div>
-            <h4>Bem-estar mental</h4>
-            <p>Técnicas e dicas para gerenciar o estresse diário.</p>
-          </div>
-
-        </div>
+        <a href="artigos.html" class="card">
+          <span class="material-symbols-outlined card-icon">article</span>
+          <h3>Artigos e Conteúdo</h3>
+          <p>Links confiáveis para sua saúde.</p>
+        </a>
       </section>
 
+      <section class="tips-section">
+        <h3>Dicas Rápidas de Bem-Estar</h3>
+
+        <div class="tip-item">
+          <span class="material-symbols-outlined">self_care</span>
+          <p>Tire 5 minutos para uma pausa e foque na sua respiração.</p>
+        </div>
+
+        <div class="tip-item">
+          <span class="material-symbols-outlined">water_drop</span>
+          <p>Mantenha-se hidratado. Beba pelo menos 2L de água por dia.</p>
+        </div>
+
+        <div class="tip-item">
+          <span class="material-symbols-outlined">phone_in_talk</span>
+          <p>Em desenvolvimento....</p>
+        </div>
+      </section>
     </main>
 
   </div>
@@ -91,6 +78,7 @@
       <p>&copy; 2025 ManUp. Um projeto MVP Saúde do Homem - UNINASSAU.</p>
     </div>
   </footer>
+
 </body>
 
 </html>

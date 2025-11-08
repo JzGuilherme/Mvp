@@ -17,5 +17,11 @@
   "bugs": {
     "url": "https://github.com/JzGuilherme/Mvp/issues"
   },
-  "homepage": "https://github.com/JzGuilherme/Mvp#readme"
+  "homepage": "https://github.com/JzGuilherme/Mvp#readme",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "dotenv": "^17.2.3",
+    "jsonwebtoken": "^9.0.2",
+    "mysql2": "^3.15.3"
+  }
 }
