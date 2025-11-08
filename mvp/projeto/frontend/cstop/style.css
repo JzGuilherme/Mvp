@@ -92,7 +92,20 @@ body {
 
 /* --- GRUPO DO FORMULÁRIO (Label + Input) --- */
 .form-group {
-    margin-bottom: 20px;
+    margin: bottom 20px;px;
+    display: flex;
+
+}
+.button {
+    width: 40px;
+    display: flex;
+    align-items: center;
+    margin-left: -40px;
+    background-color: transparent;
+    border: none;
+    traansition: 2s;
+    opacity: .5;
+
 }
 
 .form-group label {
@@ -181,3 +194,4 @@ body {
         padding: 40px 24px;
     }
 }
+

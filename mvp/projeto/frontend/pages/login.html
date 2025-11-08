@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ManUp - Login</title>
 
+  <link rel="stylesheet" href="/mvp/projeto/frontend/cstop/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
@@ -36,21 +37,27 @@
         <div class="form-group">
           <label for="senha">Senha</label>
           <input type="password" id="senha" name="senha" placeholder="••••••••" required id="password">
+          <button id = "btn" ><img src="eye-close.png" alt="eye-close"></button>
+          
         </div>
 
-        <script>
-          let eyeicon = document.getElementById("eyeicon")
-          let password = document.getElementById("senha")
-          eyeicon.onclick = function(){
-            if(paassword.type == "password"){
-              password.type = "text";
-              password.type = "eye-open.png";
-            }else {
-              password.type = "password";
-               password.type = "eye-close.png";
+        <script >
+
+          var btn = document.getElementById('btn');
+            btn.addEventListener('click', function(e){
+              e.preventDefault();
+             var input = document.getElementById('senha');
+            if(input.getAttribute('type') == 'password'){
+              input.setAttribute('type', 'text');
+              btn.innerHTML = '<img src="eye-open.png" alt="eye-open">';
+            } else {
+              input.setAttribute('type', 'password');
+              btn.innerHTML = '<img src="eye-close.png" alt="eye-close">';
             }
-          }
-           </script>
+          });
+
+       
+        </script>
         <button type="submit" class="btn-primary">Entrar</button>
        
       </form>
