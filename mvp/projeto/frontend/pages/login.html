@@ -31,7 +31,7 @@
 
         <div class="form-group" >
           <label for="email">E-mail:</label>
-          <input type="email" id="email" name="email" placeholder="joao@email.com" required>
+          <input class="input" type="email" id="email" name="email" placeholder="joao@email.com" required>
         </div>
 
         <div class="form-group">
@@ -58,6 +58,29 @@
 
        
         </script>
+
+        <script>
+  
+          const inputs = document.querySelectorAll('.form-group input');
+
+          inputs.forEach(input => {
+    
+          const formGroup = input.closest('.form-group');
+
+         if (formGroup) {
+            input.addEventListener('focus', () => {
+              formGroup.style.border = '1px solid #0078b7'; 
+              formGroup.style.boxShadow = '0 0 0 3px rgba(0, 120, 183, 0.2)'; 
+            });
+
+      
+            input.addEventListener('blur', () => {
+              formGroup.style.border = '1px solid transparent'; 
+              formGroup.style.boxShadow = 'none'; 
+          });
+          }
+        });
+</script>
         <button type="submit" class="btn-primary">Entrar</button>
        
       </form>

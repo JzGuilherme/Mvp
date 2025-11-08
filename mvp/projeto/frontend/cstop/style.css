@@ -136,7 +136,7 @@ body {
 .form-group input:focus {
     outline: none;
     border-color: transparent;
-    box-shadow: 0 0 0 3px rgba(0, 120, 183, 0.2);
+    
 }
 
 /* --- BOTÃO PRINCIPAL (Cor Verde) --- */
