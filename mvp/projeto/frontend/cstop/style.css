@@ -92,9 +92,12 @@ body {
 
 /* --- GRUPO DO FORMULÁRIO (Label + Input) --- */
 .form-group {
-    margin: bottom 20px;px;
+    margin: 20px;
     display: flex;
-
+    background-color: #ecececf1;
+    border-radius: 5px;
+    padding: 2px;
+    align-items: center;
 }
 .button {
     width: 40px;
@@ -114,7 +117,9 @@ body {
     font-weight: 500;
     font-size: 14px;
     color: var(--texto-secundario);
-    margin-bottom: 8px;
+    margin-left: 8px;
+    width: 20%;
+    margin-right: 2px;
 }
 
 .form-group input {
@@ -122,14 +127,15 @@ body {
     padding: 14px 16px;
     font-size: 16px;
     font-family: var(--fonte-corpo);
-    border: 1px solid #D9D9D9;
     border-radius: 8px;
+    border: 0;
     background-color: var(--fundo);
+    background-color: transparent;
 }
 
 .form-group input:focus {
     outline: none;
-    border-color: var(--azul);
+    border-color: transparent;
     box-shadow: 0 0 0 3px rgba(0, 120, 183, 0.2);
 }
 
@@ -195,3 +201,19 @@ body {
     }
 }
 
+img{
+    width: 35px;
+    border: transparent;
+    margin-right: 6px;
+    background-color: transparent;
+}
+
+#btn{
+    background-color: transparent;
+    border: transparent;
+
+}
+
+#email{
+    margin-right: 52px;
+}
