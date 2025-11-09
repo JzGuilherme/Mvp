@@ -1,4 +1,4 @@
-# ManUp - MVP Saúde do Homem (UNINASSAU)
+# ManUp - MVP SAÚDE DO HOMEM (UNINASSAU)
 
 Um Web App focado em engajar o público masculino no autocuidado, quebrando a barreira da procrastinação através de ferramentas de gerenciamento de saúde.
 
