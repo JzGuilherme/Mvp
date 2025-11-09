@@ -18,11 +18,11 @@ body {
 }
 
 
-  #register-page {
+  #login-page {
     width: 100%;
   }
 
-  .register-container {
+  .login-container {
     display: flex;
     min-height: 100vh;
     max-width: 1440px;
@@ -115,18 +115,18 @@ body {
     padding: 40px;
   }
 
-  .register-form {
+  .login-form {
     width: 100%;
     max-width: 307px;
     display: flex;
     flex-direction: column;
   }
 
-  .register-form__header {
-    margin-bottom: 20px;
+  .login-form__header {
+    margin-bottom: 40px;
   }
 
-  .register-form__header h2 {
+  .login-form__header h2 {
     font-family: 'Poppins', sans-serif;
     font-weight: 700;
     font-size: 26px;
@@ -135,7 +135,7 @@ body {
     margin: 0 0 3px 0;
   }
 
-  .register__header p {
+  .login-form__header p {
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
     font-size: 18px;
