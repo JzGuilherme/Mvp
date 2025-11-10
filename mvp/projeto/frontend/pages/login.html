@@ -1,65 +1,75 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-
+<html>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ManUp - Login</title>
+  <title>Man-Up - Login</title>
+  <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="/mvp/projeto/frontend/cstop/style.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" href="/">
+  <link rel="stylesheet" href="../cstop/login.css">
 </head>
-
 <body>
-
-  <div class="auth-container">
-
-    <div class="branding-panel">
-      <h1>ManUp</h1>
-      <p>Sua jornada para a saúde começa aqui. Faça login para continuar.</p>
-    </div>
-
-    <div class="form-panel">
-
-      <h2>Login</h2>
-
-      <form id="login-form">
-
-        <div class="form-group" >
-          <label for="email">E-mail:</label>
-          <input class="input" type="email" id="email" name="email" placeholder="joao@email.com" required>
+  <section id="login-page">
+    <div class="login-container">
+      <div class="info-panel">
+        <img src="../imagens/Ellipse 1.svg" alt="Decorative background art" class="info-panel__bg-art">
+        <img src="../imagens/Ellipse 2.svg" alt="Decorative background art" class="info-panel__bg-art2">
+        <div class="info-panel__content">
+          <h1>ManUp</h1>
+          <p>Website Desenvolvido para a Saúde do Homem</p>
+          <a href="#" class="btn btn--secondary">Saiba Mais</a>
         </div>
+      </div>
+      <div class="form-panel">
+        <form class="login-form" action="#" method="post">
+          <div class="login-form__header">
+            <h2>Olá Novamente!</h2>
+            <p>Bem-Vindo de Volta</p>
+          </div>
+          <div class="form-group">
+            <div class="form-group__icon-wrapper">
+              <img src="../imagens/Email.svg" alt="Email icon" class="form-group__icon">
+            </div>
+            <input type="email" id="email" name="email" placeholder="Email" required>
+          </div>
+          <div class="form-group">
+            <div class="form-group__icon-wrapper">
+              <img src="../imagens/Senha.svg" alt="Password icon" class="form-group__icon">
+            </div>
+            <input type="password" id="password" name="password" placeholder="Senha" required>
+            <!-- toggle button placed inside the form-group; type="button" prevents accidental submit -->
+            <button type="button" id="btn" class="toggle-password" aria-label="Mostrar senha" aria-pressed="false">
+              <img class="eye-icon" src="../imagens/eye-close.png" alt="Ocultar senha">
+            </button>
+          </div>
 
-        <div class="form-group">
-          <label for="senha">Senha:</label>
-          <input type="password" id="senha" name="senha" placeholder="••••••••" required id="password">
-          <button id = "btn" ><img src="eye-close.png" alt="eye-close"></button>
-          
-        </div>
+          <script>
+            // Password visibility toggle: swap input type and change icon src (keeps markup intact)
+            (function () {
+              var btn = document.getElementById('btn');
+              var input = document.getElementById('password');
+              var eye = btn.querySelector('.eye-icon');
 
-        <script >
+              btn.addEventListener('click', function (e) {
+                e.preventDefault();
+                if (!input) return;
 
-          var btn = document.getElementById('btn');
-            btn.addEventListener('click', function(e){
-              e.preventDefault();
-             var input = document.getElementById('senha');
-            if(input.getAttribute('type') == 'password'){
-              input.setAttribute('type', 'text');
-              btn.innerHTML = '<img src="eye-open.png" alt="eye-open">';
-            } else {
-              input.setAttribute('type', 'password');
-              btn.innerHTML = '<img src="eye-close.png" alt="eye-close">';
-            }
-          });
+                if (input.type === 'password') {
+                  input.type = 'text';
+                  eye.src = '../imagens/eye-open.png';
+                  eye.alt = 'Mostrar senha';
+                  btn.setAttribute('aria-pressed', 'true');
+                } else {
+                  input.type = 'password';
+                  eye.src = '../imagens/eye-close.png';
+                  eye.alt = 'Ocultar senha';
+                  btn.setAttribute('aria-pressed', 'false');
+                }
+              });
+            })();
+          </script>
 
-       
-        </script>
-
-        <script>
+          <script>
   
           const inputs = document.querySelectorAll('.form-group input');
 
@@ -80,18 +90,13 @@
           });
           }
         });
-</script>
-        <button type="submit" class="btn-primary">Entrar</button>
-       
-      </form>
+          </script>
 
-      <p class="auth-link">
-        Não tem uma conta? <a href="cadastro.html">Cadastre-se</a>
-      </p>
-
+          <button type="submit" class="btn btn--primary">Login</button>
+          <a href="../pages/cadastro.html" class="forgot-password-link">Não Tenho Uma Conta</a>
+        </form>
+      </div>
     </div>
-  </div>
-
+  </section>
 </body>
-
 </html>
