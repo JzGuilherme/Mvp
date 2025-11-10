@@ -1,63 +1,34 @@
-# ManUp - MVP SAÚDE DO HOMEM (UNINASSAU)
+# ManUp - MVP MEN'S HEALTH (UNINASSAU)
 
-Um Web App focado em engajar o público masculino no autocuidado, quebrando a barreira da procrastinação através de ferramentas de gerenciamento de saúde.
+A web app focused on engaging the male audience in self-care, breaking the barrier of procrastination through health management tools.
 
-# STATUS DO PROJETO
-EM DESENVOLVIMENTO
+# PROJECT STATUS
+IN DEVELOPMENT
 
-O projeto é um Web App (não um site ou blog) que requer autenticação de usuário (Login/Cadastro). O foco é a entrega de um protótipo funcional que resolve as dores da nossa persona (o "homem procrastinador"), conforme os requisitos do 1º Edital MVP Saúde do Homem
+The project is a web app (not a website or blog) that requires user authentication (login/registration). The focus is on delivering a functional prototype that solves the pain points of our persona (the “procrastinating man”), according to the requirements of the 1st MVP Men's Health Call for Proposals.
 
-# CONCEITO E OBJETIVO
+# CONCEPT AND OBJECTIVE
 
-O ManUp é uma plataforma privada de saúde. O usuário faz login e acessa um painel de controle onde pode gerenciar ativamente sua saúde, em vez de apenas consumir conteúdo passivo.
+ManUp is a private health platform. Users log in and access a control panel where they can actively manage their health, rather than just consuming passive content.
 
-O objetivo principal é resolver as dores da persona:
+The main objective is to solve the persona's pain points:
 
-"Eu sempre esqueço" -> Solução: Agenda de Exames.
+“I always forget” -> Solution: Exam Schedule.
 
-"Não tenho paciência para ter uma noção básica sobre a saúde" -> Solução: Calculadora de IMC e Artigos (links diretos).
+“I don't have the patience to learn the basics about health” -> Solution: BMI Calculator and Articles (direct links).
 
-"A faculdade/o trabalho me consome" -> Solução: Dicas de Bem-Estar (na Home).
+“College/work consumes me” -> Solution: Wellness Tips (on the Home page).
 
-# FUNCIONALIDADES PRINCIPAIS (ESCOPO DE 6 TELAS)
+# MAIN FEATURES (SCOPE OF 6 SCREENS)
 
-Autenticação (Login/Cadastro): Sistema de entrada seguro para a área privada do usuário.
+Authentication (Login/Registration): Secure login system for the user's private area.
 
-Tela HOME (Painel): Menu de acesso rápido às ferramentas e seção de dicas de bem-estar.
+HOME Screen (Dashboard): Quick access menu to tools and wellness tips section.
 
-Agenda da Saúde: (Funcionalidade Crítica) Permite ao usuário logado adicionar, visualizar e gerenciar seus próprios compromissos de saúde.
+Health Calendar: (Critical Feature) Allows logged-in users to add, view, and manage their own health appointments.
 
-Calculadora de IMC: Ferramenta de utilidade rápida para o usuário medir seu índice.
+BMI Calculator: Quick utility tool for users to measure their index.
 
-Artigos e Conteúdo: Curadoria de links externos para fontes de saúde confiáveis.
+Articles and Content: Curated li
 
-Perfil: (Implícito) Gerenciamento de dados do usuário e logout.
-
-# TECNOLOGIAS UTILIZADAS (TECH STACK)
-
-A arquitetura do projeto é dividida em duas frentes principais:
-
-Frontend (5 Pessoas)
-HTML5 (Semântico)
-
-CSS3 (Customizado)
-
-JavaScript 
-
-Backend (5 Pessoas)
-
-Node.js
-
-Express.js (Para a API RESTful)
-
-SQL (SQLlite/MySQL - Gerenciamento do Banco de Dados) 
-
-JWT (JSON Web Tokens) para autenticação
-
-# EQUIPE (10 PESSOAS)
-
-Este projeto foi desenvolvido por uma equipe de 10 estudantes do 2º período de ADS, divididos em duas frentes:
-
-5 Desenvolvedores Frontend
-
-5 Desenvolvedores Backend e Banco de Dados
+Translated with DeepL.com (free version)
