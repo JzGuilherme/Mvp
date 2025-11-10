@@ -21,10 +21,15 @@
         </div>
       </div>
       <div class="form-panel">
-  <form class="register-form" action="/cadastro" method="post">
+        <form class="register-form" action="/cadastro" method="post">
           <div class="register-form__header">
             <h2>Olá!</h2>
             <p>Se Inscreva para Iniciar</p>
+          </div>
+          <!-- Notificação dinâmica (inserida via JS) -->
+          <div id="notification" aria-live="polite" style="display:none; margin-bottom:12px; padding:10px; border-radius:6px;
+              background:#e6f7ff; color:#034a6b; font-weight:600; text-align:center;
+              box-shadow:0 1px 2px rgba(0,0,0,0.05);">
           </div>
           <div class="form-group">
             <div class="form-group__icon-wrapper">
@@ -66,6 +71,67 @@
                   eye.src = '../imagens/eye-close.png';
                   eye.alt = 'Ocultar senha';
                   btn.setAttribute('aria-pressed', 'false');
+                }
+              });
+            })();
+          </script>
+          
+          <!-- Script para envio via fetch, notificação e redirecionamento -->
+          <script>
+            (function () {
+              const form = document.querySelector('.register-form');
+              const notification = document.getElementById('notification');
+              if (!form) return;
+
+              function showNotification(text, type = 'info'){
+                notification.style.display = 'block';
+                notification.textContent = text;
+                if(type === 'error'){
+                  notification.style.background = '#ffe6e6';
+                  notification.style.color = '#6b0303';
+                } else {
+                  notification.style.background = '#e6f7ff';
+                  notification.style.color = '#034a6b';
+                }
+              }
+
+              form.addEventListener('submit', async function(e){
+                e.preventDefault();
+                showNotification('Enviando cadastro...');
+
+                const data = {
+                  nome_completo: form.nome_completo ? form.nome_completo.value : (form.username ? form.username.value : ''),
+                  email: form.email.value,
+                  password: form.password.value
+                };
+
+                try {
+                  const resp = await fetch('/cadastro', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                    body: JSON.stringify(data)
+                  });
+
+                  if (resp.ok) {
+                    const json = await resp.json();
+                    showNotification(json.message || 'Cadastro realizado com sucesso!');
+                    // redirecionar para login após 1.8s
+                    setTimeout(() => { window.location.href = '/'; }, 1800);
+                  } else {
+                    // tentar ler JSON de erro
+                    let errorText = 'Erro ao cadastrar.';
+                    try {
+                      const err = await resp.json();
+                      errorText = err.message || errorText;
+                    } catch (e) {
+                      const txt = await resp.text();
+                      if (txt) errorText = txt;
+                    }
+                    showNotification(errorText, 'error');
+                  }
+                } catch (err) {
+                  showNotification('Falha na conexão com o servidor.', 'error');
+                  console.error('Erro no fetch de cadastro:', err);
                 }
               });
             })();

@@ -21,10 +21,13 @@
         </div>
       </div>
       <div class="form-panel">
-        <form class="login-form" action="#" method="post">
+  <form class="login-form" action="/login" method="post">
           <div class="login-form__header">
             <h2>Olá Novamente!</h2>
             <p>Bem-Vindo de Volta</p>
+          </div>
+          <div id="login-notification" aria-live="polite" style="display:none; margin-bottom:12px; padding:10px; border-radius:6px;
+              background:#e6f7ff; color:#034a6b; font-weight:600; text-align:center; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
           </div>
           <div class="form-group">
             <div class="form-group__icon-wrapper">
@@ -73,23 +76,57 @@
   
           const inputs = document.querySelectorAll('.form-group input');
 
-          inputs.forEach(input => {
-    
-          const formGroup = input.closest('.form-group');
+          </script>
 
-         if (formGroup) {
-            input.addEventListener('focus', () => {
-              formGroup.style.border = '1px solid #0078b7'; 
-              formGroup.style.boxShadow = '0 0 0 3px rgba(0, 120, 183, 0.2)'; 
-            });
+          <!-- Script para envio via fetch + redirecionamento ao dashboard -->
+          <script>
+            (function(){
+              const form = document.querySelector('.login-form');
+              const note = document.getElementById('login-notification');
+              if (!form) return;
 
-      
-            input.addEventListener('blur', () => {
-              formGroup.style.border = '1px solid transparent'; 
-              formGroup.style.boxShadow = 'none'; 
-          });
-          }
-        });
+              function show(text, type='info'){
+                note.style.display = 'block';
+                note.textContent = text;
+                if(type === 'error'){
+                  note.style.background = '#ffe6e6'; note.style.color = '#6b0303';
+                } else {
+                  note.style.background = '#e6f7ff'; note.style.color = '#034a6b';
+                }
+              }
+
+              form.addEventListener('submit', async function(e){
+                e.preventDefault();
+                show('Tentando entrar...');
+
+                const data = { email: form.email.value, password: form.password.value };
+
+                try{
+                  const resp = await fetch('/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                    body: JSON.stringify(data)
+                  });
+
+                  if(resp.ok){
+                    const json = await resp.json();
+                    show(json.message || 'Login bem-sucedido');
+                    // redireciona para o dashboard se o backend indicar
+                    if(json.redirect){
+                      setTimeout(() => { window.location.href = json.redirect; }, 800);
+                    }
+                  } else {
+                    let errText = 'Erro no login.';
+                    try { const ejson = await resp.json(); errText = ejson.message || errText; }
+                    catch(ex){ const txt = await resp.text(); if(txt) errText = txt; }
+                    show(errText, 'error');
+                  }
+                } catch(err){
+                  console.error('Erro no fetch de login:', err);
+                  show('Falha na conexão com o servidor.', 'error');
+                }
+              });
+            })();
           </script>
 
           <button type="submit" class="btn btn--primary">Login</button>

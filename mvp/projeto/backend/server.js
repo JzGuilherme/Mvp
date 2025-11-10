@@ -90,18 +90,25 @@ app.post('/cadastro', async (req, res) => {
         const sql = 'INSERT INTO usuarios (nome_completo, email, password_hash) VALUES (?, ?, ?)';
 
         db.run(sql, [nome_completo, email, passwordHash], function(err) {
+            // determinar se o cliente espera JSON (AJAX/fetch)
+            const wantsJson = (req.headers['content-type'] && req.headers['content-type'].includes('application/json')) || (req.headers['accept'] && req.headers['accept'].includes('application/json')) || req.xhr;
+
             if (err) {
                 console.error("ERRO DO SQLITE AO TENTAR SALVAR:", err.message);
                 console.log("========================================");
                 // tratar duplicata de email
                 if (err.message && err.message.includes('UNIQUE')) {
+                    if (wantsJson) return res.status(409).json({ success: false, message: 'Erro: esse email já está cadastrado.' });
                     return res.status(409).send('Erro: esse email já está cadastrado.');
                 }
+                if (wantsJson) return res.status(500).json({ success: false, message: 'Erro ao cadastrar usuário.' });
                 return res.status(500).send('Erro ao cadastrar usuário.');
             }
 
             console.log(`SUCESSO: Usuário cadastrado com ID: ${this.lastID}`);
             console.log("========================================");
+
+            if (wantsJson) return res.json({ success: true, message: 'Usuário cadastrado com sucesso!' });
             return res.send('Usuário cadastrado com sucesso! <a href="/">Fazer Login</a>');
         });
 
@@ -121,14 +128,18 @@ app.post('/login', (req, res) => {
     const { email, password } = req.body;
 
     const sql = 'SELECT * FROM usuarios WHERE email = ?';
-    
     db.get(sql, [email], async (err, user) => {
+        // detectar se o cliente espera JSON (AJAX)
+        const wantsJson = (req.headers['content-type'] && req.headers['content-type'].includes('application/json')) || (req.headers['accept'] && req.headers['accept'].includes('application/json')) || req.xhr;
+
         if (err) {
             console.error('Erro na consulta:', err);
+            if (wantsJson) return res.status(500).json({ success: false, message: 'Erro no servidor.' });
             return res.status(500).send('Erro no servidor.');
         }
 
         if (!user) {
+            if (wantsJson) return res.status(400).json({ success: false, message: 'Email ou senha inválidos.' });
             return res.status(400).send('Email ou senha inválidos. <a href="/">Tentar novamente</a>');
         }
 
@@ -136,9 +147,12 @@ app.post('/login', (req, res) => {
 
         if (isMatch) {
             console.log(`Login bem-sucedido para: ${user.email}`);
+            // Se for AJAX, retornar JSON com redirect para dashboard
+            if (wantsJson) return res.json({ success: true, message: 'Login bem-sucedido', redirect: '/pages/dashboard.html' });
             // Resposta de sucesso personalizada com o nome completo
             res.send(`<h1>Login bem-sucedido!</h1><p>Bem-vindo, ${user.nome_completo}!</p>`);
         } else {
+            if (wantsJson) return res.status(400).json({ success: false, message: 'Email ou senha inválidos.' });
             res.status(400).send('Email ou senha inválidos. <a href="/">Tentar novamente</a>');
         }
     });
