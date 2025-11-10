@@ -1,52 +1,80 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-
+<html>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ManUp - Cadastro</title>
-  <link rel="stylesheet" href="../cstop/style.css">
- 
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Roboto:wght@400;500&display=swap"
-    rel="stylesheet">
+  <title>Man-Up - Registro</title>
+  <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../cstop/cadastro.css">
 </head>
-
 <body>
-  <div class="auth-container">
-    <div class="branding-panel">
-      <h1>ManUp</h1>
-      <p>Crie sua conta para começar a cuidar da sua saúde.</p>
+  <section id="register-page">
+    <div class="register-container">
+      <div class="info-panel">
+  <img src="../imagens/Ellipse 1.svg" alt="Decorative background art" class="info-panel__bg-art">
+  <img src="../imagens/Ellipse 2.svg" alt="Decorative background art" class="info-panel__bg-art2">
+        <div class="info-panel__content">
+          <h1>ManUp</h1>
+          <p>Website Desenvolvido para a Saúde do Homem</p>
+          <a href="#" class="btn btn--secondary">Saiba Mais</a>
+        </div>
+      </div>
+      <div class="form-panel">
+  <form class="register-form" action="/cadastro" method="post">
+          <div class="register-form__header">
+            <h2>Olá!</h2>
+            <p>Se Inscreva para Iniciar</p>
+          </div>
+          <div class="form-group">
+            <div class="form-group__icon-wrapper">
+              <img src="../imagens/Usuário.svg" alt="User icon" class="form-group__icon">
+            </div>
+            <input type="text" id="username" name="nome_completo" placeholder="Nome de Usuário" required>
+          </div>
+          <div class="form-group">
+            <div class="form-group__icon-wrapper">
+              <img src="../imagens/Email.svg" alt="Email icon" class="form-group__icon">
+            </div>
+            <input type="email" id="email" name="email" placeholder="Email" required>
+          </div>
+          <div class="form-group">
+            <div class="form-group__icon-wrapper">
+              <img src="../imagens/Senha.svg" alt="Password icon" class="form-group__icon">
+            </div>
+            <input type="password" id="password" name="password" placeholder="Senha" required>
+            <button type="button" id="btn-register" class="toggle-password" aria-label="Mostrar senha" aria-pressed="false">
+              <img class="eye-icon" src="../imagens/eye-close.png" alt="Ocultar senha">
+            </button>
+          </div>
+          <script>
+            (function () {
+              var btn = document.getElementById('btn-register');
+              var input = document.getElementById('password');
+              if (!btn || !input) return;
+              var eye = btn.querySelector('.eye-icon');
+
+              btn.addEventListener('click', function (e) {
+                e.preventDefault();
+                if (input.type === 'password') {
+                  input.type = 'text';
+                  eye.src = '../imagens/eye-open.png';
+                  eye.alt = 'Mostrar senha';
+                  btn.setAttribute('aria-pressed', 'true');
+                } else {
+                  input.type = 'password';
+                  eye.src = '../imagens/eye-close.png';
+                  eye.alt = 'Ocultar senha';
+                  btn.setAttribute('aria-pressed', 'false');
+                }
+              });
+            })();
+          </script>
+          <button type="submit" class="btn btn--primary">Registrar</button>
+          <a href="../pages/login.html" class="forgot-password-link">Já Tenho Uma Conta</a>
+        </form>
+      </div>
     </div>
-
-    <div class="form-panel">
-      <h2>Cadastro</h2>
-
-      <form id="register-form" action="/register" method="POST">
-        <div class="form-group">
-          <label for="nome">Nome Completo:</label>
-          <input class="input" type="text" id="nome" name="nome_completo" placeholder="Seu nome completo" required>
-        </div>
-        
-        <div class="form-group">
-          <label for="email">E-mail:</label>
-          <input class="input" type="email" id="email" name="email" placeholder="joao@email.com" required>
-        </div>
-
-        <div class="form-group">
-          <label for="senha">Senha:</label>
-          <input type="password" id="senha" name="password" placeholder="••••••••" required>
-        </div>
-
-        <button type="submit" class="btn-primary">Criar Conta</button>
-      </form>
-
-      <p class="auth-link">
-        Tem uma conta? <a href="login.html">Login</a>
-      </p>
-      </p>
-
-    </div>
-  </div>
+  </section>
 </body>
 </html>

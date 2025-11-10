@@ -12,6 +12,8 @@ const port = 3000;
 
 // 3. Middlewares (Ajudantes)
 app.use(express.urlencoded({ extended: true }));
+// Também aceitar JSON (AJAX) e facilitar testes
+app.use(express.json());
 
 // --- Configuração de Caminhos ---
 // Define o caminho para a pasta 'frontend'
@@ -25,11 +27,13 @@ app.use(express.static(pagesPath)); // Para eye-close.png, etc.
 
 
 // 4. Conectar/Criar o Banco de Dados SQLite
-const db = new sqlite3.Database('./login.db', (err) => {
+// Usar caminho absoluto para garantir que o arquivo fique na pasta backend
+const dbPath = path.join(__dirname, 'login.db');
+const db = new sqlite3.Database(dbPath, (err) => {
     if (err) {
         console.error('Erro ao abrir o banco de dados:', err.message);
     } else {
-        console.log('Conectado ao banco de dados SQLite.');
+        console.log('Conectado ao banco de dados SQLite em', dbPath);
     }
 });
 
@@ -63,15 +67,15 @@ app.get('/', (req, res) => {
  * ROTA DE CADASTRO (recebe dados do register.html/cadastro.html)
  */
 // <--- INÍCIO DA MUDANÇA (Logs de Debug) --->
-app.post('/register', async (req, res) => {
-    
-    // --- PASSO 1: VER O QUE CHEGOU ---
+app.post('/cadastro', async (req, res) => {
     console.log("========================================");
     console.log("Recebi uma tentativa de cadastro!");
     console.log("Dados recebidos do formulário:", req.body);
-    // --- FIM DO PASSO 1 ---
 
-    const { nome_completo, email, password } = req.body;
+    // aceitar tanto nome_completo quanto username (caso o frontend use username)
+    const nome_completo = req.body.nome_completo || req.body.username;
+    const email = req.body.email;
+    const password = req.body.password;
 
     // Checagem de segurança simples
     if (!nome_completo || !email || !password) {
@@ -79,30 +83,32 @@ app.post('/register', async (req, res) => {
         return res.status(400).send("Erro no cadastro: Todos os campos são obrigatórios.");
     }
 
-    const salt = await bcrypt.genSalt(10);
-    const passwordHash = await bcrypt.hash(password, salt);
+    try {
+        const salt = await bcrypt.genSalt(10);
+        const passwordHash = await bcrypt.hash(password, salt);
 
-    const sql = 'INSERT INTO usuarios (nome_completo, email, password_hash) VALUES (?, ?, ?)';
-    
-    db.run(sql, [nome_completo, email, passwordHash], function(err) {
-        if (err) {
-            
-            // --- PASSO 2: VER O ERRO DO BANCO ---
-            console.error("ERRO DO SQLITE AO TENTAR SALVAR:", err.message);
+        const sql = 'INSERT INTO usuarios (nome_completo, email, password_hash) VALUES (?, ?, ?)';
+
+        db.run(sql, [nome_completo, email, passwordHash], function(err) {
+            if (err) {
+                console.error("ERRO DO SQLITE AO TENTAR SALVAR:", err.message);
+                console.log("========================================");
+                // tratar duplicata de email
+                if (err.message && err.message.includes('UNIQUE')) {
+                    return res.status(409).send('Erro: esse email já está cadastrado.');
+                }
+                return res.status(500).send('Erro ao cadastrar usuário.');
+            }
+
+            console.log(`SUCESSO: Usuário cadastrado com ID: ${this.lastID}`);
             console.log("========================================");
-            // --- FIM DO PASSO 2 ---
+            return res.send('Usuário cadastrado com sucesso! <a href="/">Fazer Login</a>');
+        });
 
-            console.error('Erro ao cadastrar usuário:', err.message);
-            return res.status(500).send('Erro ao cadastrar. Esse email já existe.');
-        }
-        
-        // --- PASSO 3: VER O SUCESSO ---
-        console.log(`SUCESSO: Usuário cadastrado com ID: ${this.lastID}`);
-        console.log("========================================");
-        // --- FIM DO PASSO 3 ---
-        
-        res.send('Usuário cadastrado com sucesso! <a href="/">Fazer Login</a>');
-    });
+    } catch (err) {
+        console.error('Erro interno no cadastro:', err);
+        return res.status(500).send('Erro interno no servidor.');
+    }
 });
 // <--- FIM DA MUDANÇA --->
 
