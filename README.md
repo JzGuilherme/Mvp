@@ -1,4 +1,4 @@
-# ManUp - MVP MEN'S HEALTh/ SAÚDE E DESENVOLVIMENTO PARA HOMENS (UNINASSAU)
+# ManUp - MVP MEN'S HEALTH/ SAÚDE E DESENVOLVIMENTO PARA HOMENS (UNINASSAU)
 
 A web app focused on engaging the male audience in self-care, breaking the barrier of procrastination through health management tools.
 
