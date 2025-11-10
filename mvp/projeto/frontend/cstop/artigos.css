@@ -21,21 +21,21 @@
     background-color: var(--branco);
     color: var(--texto-secundario);
     padding: 10px 20px;
-    border: 1px solid var(--verde-secundario);
+    border: 1px solid var(--cor-secundaria);
     border-radius: 20px; /* Pílulas arredondadas */
     cursor: pointer;
     transition: all 0.3s ease;
 }
 
 .filter-btn:hover {
-    background-color: var(--verde-secundario);
-    color: var(--verde-principal);
+    background-color: var(--cor-secundaria);
+    color: var(--branco);
 }
 
 .filter-btn.active {
-    background-color: var(--verde-principal);
+    background-color: var(--cor-secundaria);
     color: var(--branco);
-    border-color: var(--verde-principal);
+    border-color: var(--cor-secundaria);
 }
 
 /* --- Lista de Artigos (Versão Completa) --- */
@@ -48,7 +48,7 @@
 .article-card-full {
     display: flex; /* Imagem ao lado do texto */
     background-color: var(--branco);
-    border: 1px solid var(--verde-secundario);
+    border: 1px solid var(--cor-secundaria);
     border-radius: 16px;
     box-shadow: var(--sombra-card);
     overflow: hidden;
@@ -56,7 +56,7 @@
 }
 
 .article-card-full:hover {
-    box-shadow: 0 8px 25px rgba(0, 167, 157, 0.1);
+    box-shadow: 0 8px 25px rgba(0, 120, 183, 0.08);
 }
 
 .article-image-full {
@@ -77,7 +77,7 @@
     font-family: var(--fonte-titulo);
     font-weight: 600;
     font-size: 12px;
-    color: var(--verde-principal);
+    color: var(--cor-secundaria);
     text-transform: uppercase;
     margin-bottom: 8px;
 }
@@ -103,9 +103,9 @@
     font-weight: 600;
     font-size: 14px;
     background-color: var(--branco);
-    color: var(--verde-principal);
+    color: var(--cor-secundaria);
     padding: 10px 20px;
-    border: 2px solid var(--verde-principal);
+    border: 2px solid var(--cor-secundaria);
     border-radius: 8px;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -113,7 +113,7 @@
 }
 
 .btn-primary-outline:hover {
-    background-color: var(--verde-principal);
+    background-color: var(--cor-secundaria);
     color: var(--branco);
 }
 

@@ -11,7 +11,8 @@
     grid-template-columns: 1fr 1fr; /* 2 colunas */
     gap: 32px;
     background-color: var(--branco);
-    border: 1px solid var(--verde-secundario);
+    /* usar as variáveis globais definidas em :root (mesmas do dashboard.css) */
+    border: 1px solid var(--cor-secundaria);
     border-radius: 16px;
     box-shadow: var(--sombra-card);
     overflow: hidden; /* Garante as bordas arredondadas */
@@ -34,9 +35,12 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: var(--verde-secundario);
+    /* usar a variável de cor secundária definida globalmente */
+    background-color: var(--cor-secundaria);
     padding: 40px;
     text-align: center;
+    /* texto branco para melhor contraste sobre o painel colorido */
+    color: var(--branco);
 }
 
 /* Escondido por padrão, só aparece com o JS */
@@ -53,7 +57,8 @@
     font-family: var(--fonte-titulo);
     font-size: 60px;
     font-weight: 700;
-    color: var(--verde-principal);
+    /* valor do IMC em branco (conforme solicitado) */
+    color: var(--branco);
     line-height: 1.2;
     margin: 8px 0;
 }
@@ -67,7 +72,7 @@
 
 /* Classes de cor para o status */
 .status-magreza { color: #f57f17; }
-.status-normal { color: var(--verde-principal); }
+.status-normal { color: var(--branco); }
 .status-sobrepeso { color: #f57f17; }
 .status-obesidade { color: #D32F2F; }
 
