@@ -148,7 +148,7 @@ app.post('/login', (req, res) => {
         if (isMatch) {
             console.log(`Login bem-sucedido para: ${user.email}`);
             // Se for AJAX, retornar JSON com redirect para dashboard
-            if (wantsJson) return res.json({ success: true, message: 'Login bem-sucedido', redirect: '/pages/dashboard.html' });
+            if (wantsJson) return res.json({ success: true, message: 'Login bem-sucedido', redirect: '/pages/dashboard.html', nome: user.nome_completo });
             // Resposta de sucesso personalizada com o nome completo
             res.send(`<h1>Login bem-sucedido!</h1><p>Bem-vindo, ${user.nome_completo}!</p>`);
         } else {
