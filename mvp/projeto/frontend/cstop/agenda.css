@@ -36,7 +36,7 @@
     font-family: var(--fonte-titulo);
     font-weight: 600;
     font-size: 16px;
-    background-color: var(--verde-principal);
+    background-color: var(--azul);
     color: var(--branco);
     padding: 12px 24px;
     border: none;
@@ -46,7 +46,7 @@
 }
 
 .btn-primary:hover {
-    background-color: #008a80;
+    background-color: var(--azulescuro);
 }
 
 /* --- Lista de Itens da Agenda --- */
@@ -318,11 +318,11 @@ body {
 /* 3. Estilo do Rodapé */
 .app-footer {
     width: 100%;
-    background-color: var(--branco);
+    background-color: var(--azul);
     border-top: 1px solid var(--verde-secundario);
     padding: 24px 0;
     text-align: center;
-    color: var(--texto-secundario);
+    color: var(--branco);
     font-size: 14px;
     
     /* Impede que o rodapé encolha */

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ManUp - Fórum da Comunidade</title>
+
+  <!-- Dependências de Fontes (Google Fonts e Ícones) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Roboto:wght@400;500&display=swap"
+    rel="stylesheet" />
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+  <!-- Folhas de Estilo (CSS) -->
+  <link rel="stylesheet" href="../cstop/style.css" />
+  <link rel="stylesheet" href="../cstop/faq.css" />
+</head>
+
+<body>
+  <div class="app-container">
+    
+    <!-- Cabeçalho Global -->
+    <header class="app-header">
+      <a href="dashboard.html" class="logo">ManUp</a>
+      <div class="user-menu">
+        <span>Olá, <strong>João!</strong></span>
+        <a href="login.html" class="btn-logout">Sair</a>
+      </div>
+    </header>
+
+    <!-- Conteúdo principal da página -->
+    <main class="app-content">
+
+      <!-- Cabeçalho da Página do Fórum -->
+      <section class="page-header">
+        <h2>Fórum da Comunidade</h2>
+      </section>
+      <p class="page-subtitle">
+        Deixe sua dúvida ou compartilhe sua experiência de forma anônima.
+      </p>
+
+      <!-- Container que agrupa o formulário e o feed -->
+      <div class="forum-container">
+        
+        <!-- Formulário de Nova Postagem (Corrigido) -->
+        <div class="new-post-form post-card">
+          <h3>Nova Postagem</h3>
+          
+          <form id="post-form">
+            <div class="form-group">
+              <label for="post-input">Sua mensagem:</label>
+              <textarea id="post-input" rows="4" placeholder="Escreva sua dúvida ou conselho..." required></textarea>
+            </div>
+            <button type="submit" class="btn-primary" id="submit-button">
+              Publicar
+            </button>
+          </form>
+        </div>
+
+        <!-- Feed de Postagens (Será preenchido pelo JS) -->
+        <div class="post-feed" id="post-feed">
+          <div class="feed-status-message" id="feed-status-message">
+            Carregando postagens...
+          </div>
+        </div>
+
+        <!-- Controlo de Paginação -->
+        <div class="pagination-controls" id="pagination-controls">
+          <button class="btn-secondary" id="prev-page-btn" disabled>
+            <span class="material-symbols-outlined">arrow_back</span>
+            Anterior
+          </button>
+          <button class="btn-secondary" id="next-page-btn" disabled>
+            Próxima
+            <span class="material-symbols-outlined">arrow_forward</span>
+          </button>
+        </div>
+
+      </div>
+
+    </main>
+  </div><!-- Fim do .app-container -->
+
+  <!-- Rodapé Global -->
+  <footer class="app-footer">
+    <div class="footer-content">
+      <p>&copy; 2025 ManUp. Um projeto MVP Saúde do Homem - UNINASSAU.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts do Firebase -->
+  <script type="module">
+    // Importa as funções de SDK necessárias
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+    import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+    
+    // Novas importações (Likes e Paginação)
+    import { 
+      getFirestore, 
+      collection, 
+      addDoc, 
+      onSnapshot, 
+      query, 
+      orderBy, 
+      serverTimestamp,
+      doc, 
+      updateDoc,
+      increment,
+      limit,
+      startAfter,
+      getDocs,
+      endBefore,
+      limitToLast
+    } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+    // --- Configuração das Chaves ---
+    window.__firebase_config = JSON.stringify({
+      apiKey: "AIzaSyBKOohYXxCaXnsua6n4THW45AA-BlZL1JE",
+      authDomain: "faq---manup.firebaseapp.com",
+      projectId: "faq---manup",
+      storageBucket: "faq---manup.firebasestorage.app",
+      messagingSenderId: "788949316021",
+      appId: "1:788949316021:web:5a15162f6074c3954aa9fc",
+      measurementId: "G-YL6CM6EZQ6"
+    });
+
+    // Disponibiliza as funções para o faq.js
+    window.firebase = {
+      initializeApp,
+      getAuth,
+      signInAnonymously,
+      signInWithCustomToken,
+      getFirestore,
+      collection,
+      addDoc,
+      onSnapshot,
+      query,
+      orderBy,
+      serverTimestamp,
+      doc,
+      updateDoc,
+      increment,
+      limit,
+      startAfter,
+      getDocs,
+      endBefore,
+      limitToLast
+    };
+  </script>
+
+  <!-- Script da Página (Lógica do Fórum) -->
+  <script type="module" src="../Script/faq.js"></script>
+</body>
+</html>

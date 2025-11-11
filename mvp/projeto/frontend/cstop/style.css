@@ -1,220 +1,250 @@
 
-/**
- CUIDADO COM O QUE VOCÊ IRÁ MEXER 
- */
 
-
-/* --- RAÍZ DO PROJETO (Cores e Fontes do Guia) --- */
+/* ===================================================
+   1. RAÍZ (Suas Variáveis de Design Originais)
+   =================================================== */
 :root {
-    --azul: #0078B7;    /* Cor principal (Confiança) */
-    --verde: #4CAF50;   /* Cor de ação (Sucesso) */
-    --fundo: #F5F5F5;   /* Fundo do painel do formulário */
+    /* Cores (Estilo DoctorCare / Saúde) */
+    --cor-principal: #0078B7;  /* Azul do seu guia original */
+    
+    --cor-secundaria: #4CAF50; /* Verde do seu guia original */
+
+    --fundo-claro: #F8F9FA;
+    --fundo-bege: #FFFBF7; /* Um tom suave para o fundo */
     --branco: #FFFFFF;
+    --borda: #E5E7EB;
+    
     --texto-principal: #1A1A1A;
-    --texto-secundario: #666666;
+    --texto-secundario: #6B7280;
     
     --fonte-titulo: 'Poppins', sans-serif;
     --fonte-corpo: 'Roboto', sans-serif;
+
+    --sombra-card: 0 4px 20px rgba(0, 0, 0, 0.05);
+
+    /* --- Alias (Compatibilidade com agenda/imc) --- */
+    --azul: var(--cor-principal);
+    --azulescuro: #02507a;    /* Cor secundaria (Feedback) */
+    --verde: var(--cor-secundaria);
+    --verde-principal: var(--cor-secundaria);
+    --verde-secundario: #E8F5E9; 
+    --fundo: var(--fundo-bege);
 }
-/**
- Cuidado com o que você irá mexer
- */
 
-
-/* --- RESET BÁSICO --- */
+/* ===================================================
+   2. RESET BÁSICO E LAYOUT STICKY FOOTER
+   =================================================== */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+html, body {
+    height: 100%; /* Necessário para o Sticky Footer */
+}
+
 body {
     font-family: var(--fonte-corpo);
-    background-color: var(--fundo);
     color: var(--texto-principal);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+    line-height: 1.6;
+    display: flex; /* ATIVA O STICKY FOOTER */
+    flex-direction: column; /* ATIVA O STICKY FOOTER */
+    min-height: 100vh; /* ATIVA O STICKY FOOTER */
 }
 
-/* --- CONTAINER DE AUTENTICAÇÃO (Layout 2 Colunas) --- */
-.auth-container {
-    display: flex;
+/* Fundo específico para o body do Dashboard */
+body.dashboard-page {
+    background-color: var(--fundo-bege);
+}
+/* Fundo padrão para outras páginas */
+body:not(.dashboard-page) {
+    background-color: var(--fundo-claro);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ===================================================
+   3. LAYOUT GLOBAL (O Esqueleto do Site)
+   =================================================== */
+
+/* O Container que centraliza o conteúdo E empurra o rodapé */
+.app-container {
     width: 100%;
-    max-width: 1000px;
-    min-height: 600px;
-    background-color: var(--branco);
-    border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    overflow: hidden; /* Garante que os cantos arredondados sejam aplicados */
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+    flex-grow: 1; /* ATIVA O STICKY FOOTER */
 }
 
-/* --- 1. PAINEL DA MARCA (Branding) --- */
-.branding-panel {
-    width: 45%;
-    background-color: var(--azul);
-    color: var(--branco);
-    padding: 60px 40px;
+/* O Cabeçalho (Header) */
+.app-header {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 0;
+    border-bottom: 1px solid var(--borda);
+}
+.app-header .logo {
+    font-family: var(--fonte-titulo);
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--cor-principal);
+}
+.user-menu {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-weight: 500;
+}
+.btn-logout {
+    font-family: var(--fonte-titulo);
+    font-weight: 600;
+    font-size: 14px;
+    background-color: #F0F7FF;
+    color: var(--cor-principal);
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+.btn-logout:hover {
+    background-color: var(--cor-principal);
+    color: var(--branco);
 }
 
-.branding-panel h1 {
+/* O Conteúdo Principal */
+.app-content {
+    padding: 24px 0 60px; /* Padding do 'dashboard.css' original */
+}
+
+/* O Rodapé (Footer) */
+.app-footer {
+    background-color: var(--cor-principal);
+    color: var(--branco); 
+    padding: 32px 24px; 
+    text-align: center;
+    flex-shrink: 0; /* ATIVA O STICKY FOOTER */
+}
+.footer-content {
+    max-width: 1100px;
+    margin: 0 auto;
+    font-size: 14px;
+}
+
+/* O Título de cada Página */
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 40px 0 32px 0;
+}
+.page-header h2 {
     font-family: var(--fonte-titulo);
-    font-size: 48px;
-    font-weight: 700;
+    font-size: 28px;
+    font-weight: 600;
+}
+
+/* ===================================================
+   4. COMPONENTES GLOBAIS
+   =================================================== */
+
+/* Botão Primário (Azul) */
+.btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-family: var(--fonte-titulo);
+    font-weight: 600;
+    font-size: 16px;
+    background-color: var(--cor-principal);
+    color: var(--branco);
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.btn-primary:hover {
+    background-color: #005A8D;
+}
+.btn-primary:disabled {
+    background-color: var(--borda);
+    cursor: not-allowed;
+}
+
+/* Card de "Acesso Rápido" */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 24px;
+}
+.card {
+    background-color: var(--branco);
+    border: 1px solid var(--borda);
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: var(--sombra-card);
+    transition: all 0.3s ease;
+    display: block; 
+}
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 120, 183, 0.1);
+    border-color: var(--cor-principal);
+}
+.card-icon {
+    font-size: 40px;
+    color: var(--cor-principal);
     margin-bottom: 16px;
 }
-
-.branding-panel p {
-    font-size: 18px;
-    line-height: 1.6;
-}
-
-/* --- 2. PAINEL DO FORMULÁRIO --- */
-.form-panel {
-    width: 55%;
-    padding: 60px 50px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.form-panel h2 {
+.card h3 {
     font-family: var(--fonte-titulo);
-    font-size: 32px;
-    font-weight: 700;
-    color: var(--texto-principal);
-    margin-bottom: 32px;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+.card p {
+    font-size: 14px;
+    color: var(--texto-secundario);
 }
 
-/* --- GRUPO DO FORMULÁRIO (Label + Input) --- */
-.form-group {
-    margin: 20px;
-    display: flex;
-    background-color: #ecececf1;
-    border-radius: 5px;
-    padding: 2px;
-    align-items: center;
+/* ===================================================
+   5. CORREÇÕES (Formulários da Agenda/IMC)
+   =================================================== */
+/*
+   Estes estilos estavam em falta no seu 'dashboard.css'
+   e são necessários para a Agenda e o IMC.
+*/
+.modal-form-group {
+    margin-bottom: 20px;
 }
-.button {
-    width: 40px;
-    display: flex;
-    align-items: center;
-    margin-left: -40px;
-    background-color: transparent;
-    border: none;
-    transition: 2s;
-    opacity: .5;
-
-}
-
-.form-group label {
+.modal-form-group label {
     display: block;
     font-family: var(--fonte-corpo);
     font-weight: 500;
     font-size: 14px;
     color: var(--texto-secundario);
-    margin-left: 8px;
-    width: 20%;
-    margin-right: 2px;
+    margin-bottom: 8px;
 }
-
-.form-group input {
+.modal-form-group input[type="text"],
+.modal-form-group input[type="date"],
+.modal-form-group input[type="number"],
+.modal-form-group textarea {
     width: 100%;
     padding: 14px 16px;
     font-size: 16px;
     font-family: var(--fonte-corpo);
+    border: 1px solid var(--borda);
     border-radius: 8px;
-    border: 0;
-    background-color: var(--fundo);
-    background-color: transparent;
+    background-color: var(--fundo-claro);
 }
-
-.form-group input:focus {
+.modal-form-group input:focus,
+.modal-form-group textarea:focus {
     outline: none;
-    border-color: transparent;
-    
-}
-
-/* --- BOTÃO PRINCIPAL (Cor Verde) --- */
-.btn-primary {
-    width: 100%;
-    padding: 16px;
-    font-family: var(--fonte-titulo);
-    font-size: 16px;
-    font-weight: 700;
-    color: var(--branco);
-    background-color: var(--verde); /* Cor de Ação */
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-top: 16px;
-}
-
-.btn-primary:hover {
-    background-color: #3e8e41; /* Verde um pouco mais escuro */
-}
-
-/* --- LINK DE AUTENTICAÇÃO (Ir para Cadastro/Login) --- */
-.auth-link {
-    text-align: center;
-    margin-top: 24px;
-    font-size: 14px;
-    color: var(--texto-secundario);
-}
-
-.auth-link a {
-    color: var(--azul);
-    font-weight: 500;
-    text-decoration: none;
-}
-
-.auth-link a:hover {
-    text-decoration: underline;
-}
-
-/* --- RESPONSIVIDADE (Celular) --- */
-@media (max-width: 800px) {
-    .auth-container {
-        flex-direction: column; /* Empilha os painéis */
-        min-height: 100vh;
-        max-width: 100%;
-        border-radius: 0;
-    }
-
-    .branding-panel,
-    .form-panel {
-        width: 100%;
-    }
-
-    .branding-panel {
-        padding: 40px 24px;
-        text-align: center;
-    }
-
-    .form-panel {
-        padding: 40px 24px;
-    }
-}
-
-img{
-    width: 35px;
-    border: transparent;
-    margin-right: 6px;
-    background-color: transparent;
-    cursor: pointer;
-}
-
-#btn{
-    background-color: transparent;
-    border: transparent;
-
-}
-
-#email{
-    margin-right: 52px;
+    border-color: var(--cor-principal);
+    box-shadow: 0 0 0 3px rgba(0, 120, 183, 0.1);
 }
