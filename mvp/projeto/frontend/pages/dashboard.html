@@ -9,8 +9,15 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-  <!-- CSS: caminho relativo ao servidor estático (pasta frontend) -->
-  <link rel="stylesheet" href="/cstop/dashboard.css">
+  
+  <!-- 
+    CSS: 
+    Presumi que o seu 'dashboard.css' está na pasta 'cstop', 
+    assim como o 'style.css' mestre.
+  -->
+  <link rel="stylesheet" href="../cstop/style.css"> <!-- Arquivo Mestre (layout) -->
+  <link rel="stylesheet" href="../cstop/dashboard.css"> <!-- Arquivo Específico (cards) -->
+  
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
 
@@ -19,10 +26,12 @@
   <div class="app-container">
 
     <header class="app-header">
-      <div class="logo">ManUp</div>
+      <!-- O logo agora é clicável (aponta para este mesmo dashboard) -->
+      <a href="dashboard.html" class="logo">ManUp</a>
       <div class="user-menu">
         <span>Olá, <strong>João!</strong></span>
-        <a href="../pages/login.html" class="btn-logout">Sair</a>
+        <!-- Corrigi o caminho do login para ser relativo à pasta 'pages' -->
+        <a href="login.html" class="btn-logout">Sair</a>
       </div>
     </header>
 
@@ -51,8 +60,20 @@
           <h3>Artigos e Conteúdo</h3>
           <p>Links confiáveis para sua saúde.</p>
         </a>
+
+        <!-- 
+          ==================================================================
+          ↓↓↓ NOVO CARD ADICIONADO AQUI ↓↓↓
+          ================================================================== 
+        -->
+        <a href="faq.html" class="card">
+          <span class="material-symbols-outlined card-icon">forum</span>
+          <h3>Fórum da Comunidade</h3>
+          <p>Tire dúvidas e compartilhe experiências.</p>
+        </a>
       </section>
 
+      <!-- A seção de Dicas Rápidas permanece a mesma -->
       <section class="tips-section">
         <h3>Dicas Rápidas de Bem-Estar</h3>
 

@@ -1,89 +1,90 @@
 /**
- Cuidado com o que você irá mexer
+ * calculadoraimc.css
+ * (Versão corrigida para fundo branco, sem bordas)
  */
 
-/* ===================================================
-   ESTILOS DA PÁGINA DE IMC (Tela 6)
-   =================================================== */
-
+/* Layout principal da calculadora (2 colunas) */
 .imc-calculator-container {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* 2 colunas */
-    gap: 32px;
+    grid-template-columns: 1fr 1fr;
+    gap: 0; /* Remove o gap */
+    
+    /* Usa o estilo .card global para o fundo e borda */
     background-color: var(--branco);
-    /* usar as variáveis globais definidas em :root (mesmas do dashboard.css) */
-    border: 1px solid var(--cor-secundaria);
-    border-radius: 16px;
+    border-radius: 12px;
     box-shadow: var(--sombra-card);
-    overflow: hidden; /* Garante as bordas arredondadas */
+    border: 1px solid var(--borda);
+    overflow: hidden; 
 }
 
 /* Painel da Esquerda (Formulário) */
 .imc-form-panel {
     padding: 40px;
+    border-right: 1px solid var(--borda); /* Linha divisória */
 }
-
 .imc-form-panel h3 {
     font-family: var(--fonte-titulo);
     font-size: 24px;
     margin-bottom: 24px;
 }
+#imc-form .btn-primary {
+    width: 100%; 
+}
 
 /* Painel da Direita (Resultado) */
 .imc-result-panel {
-    display: flex;
+    display: none; /* Escondido por padrão, o JS mostra */
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* usar a variável de cor secundária definida globalmente */
-    background-color: var(--cor-secundaria);
+    
+    /* CORREÇÃO: Fundo branco, texto escuro */
+    background-color: var(--branco); 
+    color: var(--texto-principal);
     padding: 40px;
     text-align: center;
-    /* texto branco para melhor contraste sobre o painel colorido */
-    color: var(--branco);
 }
-
-/* Escondido por padrão, só aparece com o JS */
-#imc-result {
-    display: none; 
+.imc-result-panel.visible {
+    display: flex;
 }
-
-#imc-result p {
+.imc-result-panel p {
     font-size: 16px;
     color: var(--texto-secundario);
 }
-
-#imc-result #imc-value {
+.imc-result-panel #imc-value {
     font-family: var(--fonte-titulo);
     font-size: 60px;
     font-weight: 700;
-    /* valor do IMC em branco (conforme solicitado) */
-    color: var(--branco);
+    color: var(--cor-principal); /* Azul */
     line-height: 1.2;
     margin: 8px 0;
 }
-
-#imc-result #imc-status {
+.imc-result-panel #imc-status {
     font-family: var(--fonte-titulo);
     font-size: 24px;
     font-weight: 600;
     margin-bottom: 16px;
+    text-transform: capitalize;
 }
 
-/* Classes de cor para o status */
-.status-magreza { color: #f57f17; }
-.status-normal { color: var(--branco); }
-.status-sobrepeso { color: #f57f17; }
-.status-obesidade { color: #D32F2F; }
+/* Classes de cor para o status (agora usam tons de cor de texto) */
+.status-magreza { color: #F57F17; } /* Laranja */
+.status-normal { color: var(--cor-secundaria); } /* Verde */
+.status-sobrepeso { color: #F57F17; } /* Laranja */
+.status-obesidade { color: #D32F2F; } /* Vermelho */
 
-#imc-result #imc-message {
+.imc-result-panel #imc-message {
     font-size: 14px;
     line-height: 1.5;
+    max-width: 90%;
 }
 
-/* Responsividade para a calculadora */
 @media (max-width: 800px) {
     .imc-calculator-container {
-        grid-template-columns: 1fr; /* 1 coluna em celular */
+        grid-template-columns: 1fr;
+    }
+    .imc-form-panel {
+        border-right: none;
+        border-bottom: 1px solid var(--borda);
     }
 }

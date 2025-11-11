@@ -1,0 +1,232 @@
+/**
+ * faq.css
+ * Estilos específicos para a página do Fórum da Comunidade (v2.1).
+ */
+
+/* Subtítulo (abaixo do h2 "Fórum da Comunidade") */
+.page-subtitle {
+  font-size: 16px;
+  color: var(--texto-secundario);
+  margin-top: -24px;
+  margin-bottom: 32px;
+}
+
+/* Container principal do fórum */
+.forum-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Card base (usado para postagens, formulário e respostas) */
+.post-card {
+  background-color: var(--branco);
+  border: 1px solid var(--borda);
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: var(--sombra-card);
+}
+
+/* Formulário de Nova Postagem */
+.new-post-form h3 {
+  font-family: var(--fonte-titulo);
+  font-weight: 600;
+  font-size: 20px;
+  margin-bottom: 16px;
+}
+.new-post-form .form-group {
+  margin-bottom: 16px;
+}
+.new-post-form label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--texto-secundario);
+  margin-bottom: 8px;
+}
+.new-post-form textarea {
+  width: 100%;
+  padding: 12px;
+  font-family: var(--fonte-corpo);
+  font-size: 16px;
+  border: 1px solid var(--borda);
+  border-radius: 8px;
+  resize: vertical;
+  min-height: 80px;
+}
+.new-post-form textarea:focus {
+  outline: none;
+  border-color: var(--cor-principal);
+  box-shadow: 0 0 0 3px rgba(0, 120, 183, 0.1);
+}
+.new-post-form .btn-primary {
+  width: auto;
+  float: right;
+}
+
+/* Mensagem de Status do Feed (Carregando, Erro, Vazio) */
+.feed-status-message {
+  text-align: center;
+  padding: 40px;
+  color: var(--texto-secundario);
+  font-style: italic;
+  font-size: 16px;
+}
+
+/* Estilo de um Card de Postagem Individual */
+.post-card .post-content {
+  font-size: 16px;
+  color: var(--texto-principal);
+  white-space: pre-wrap; 
+  word-wrap: break-word;
+}
+
+.post-card .post-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--borda);
+}
+
+.post-card .post-timestamp {
+  font-size: 12px;
+  color: var(--texto-secundario);
+}
+
+/* --- Barra de Ações (Like e Responder) --- */
+.post-actions {
+  display: flex;
+  gap: 16px;
+}
+
+/* Botão base para ações */
+.btn-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: transparent;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 10px;
+  cursor: pointer;
+  font-family: var(--fonte-corpo);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--texto-secundario);
+  transition: all 0.2s ease;
+}
+.btn-action:hover {
+  background-color: var(--fundo-claro);
+}
+.btn-action .material-symbols-outlined {
+  font-size: 20px;
+}
+
+/* Estilo do Botão de Like */
+.btn-like.liked {
+  color: var(--cor-principal);
+}
+.btn-like.liked .material-symbols-outlined {
+  font-variation-settings: 'FILL' 1;
+}
+
+/* --- Container de Respostas Aninhadas --- */
+.replies-container {
+  margin-top: 20px;
+  padding-left: 24px;
+  border-left: 2px solid var(--borda);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Card de uma Resposta Individual */
+.reply-card {
+  padding: 16px;
+}
+
+/* Formulário de Resposta (escondido por padrão) */
+.reply-form {
+  display: none;
+  margin-top: 16px;
+}
+.reply-form textarea {
+  width: 100%;
+  padding: 10px;
+  font-family: var(--fonte-corpo);
+  font-size: 14px;
+  border: 1px solid var(--borda);
+  border-radius: 8px;
+  resize: vertical;
+  min-height: 60px;
+  margin-bottom: 10px;
+}
+.reply-form .reply-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+/* Botão secundário (para Cancelar) */
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--fonte-titulo);
+  font-weight: 600;
+  font-size: 14px;
+  background-color: var(--fundo-claro);
+  color: var(--texto-secundario);
+  padding: 8px 16px;
+  border: 1px solid var(--borda);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.btn-secondary:hover {
+  background-color: #E5E7EB;
+}
+.btn-secondary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* * ==================================================================
+ * ↓↓↓ CORREÇÃO (v2.1) ↓↓↓
+ * ==================================================================
+ *
+ * A regra .btn-primary-small anterior estava incompleta.
+ * Esta versão é um estilo completo e autónomo.
+ */
+.btn-primary-small {
+  /* Layout (copiado do .btn-secondary para consistência) */
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--fonte-titulo);
+  font-weight: 600;
+  font-size: 14px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  
+  /* Cores primárias (Azul) */
+  background-color: var(--cor-principal);
+  color: var(--branco);
+  border: 1px solid var(--cor-principal);
+}
+.btn-primary-small:hover {
+  background-color: #005A8D;
+}
+
+/* --- Paginação --- */
+.pagination-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 24px;
+  border-top: 1px solid var(--borda);
+}
