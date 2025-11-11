@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
 
   <link rel="stylesheet" href="../cstop/login.css">
 </head>
+
 <body>
   <section id="login-page">
     <div class="login-container">
@@ -21,7 +23,7 @@
         </div>
       </div>
       <div class="form-panel">
-  <form class="login-form" action="/login" method="post">
+        <form class="login-form" action="/login" method="post">
           <div class="login-form__header">
             <h2>Olá Novamente!</h2>
             <p>Bem-Vindo de Volta</p>
@@ -73,57 +75,57 @@
           </script>
 
           <script>
-  
-          const inputs = document.querySelectorAll('.form-group input');
+
+            const inputs = document.querySelectorAll('.form-group input');
 
           </script>
 
           <!-- Script para envio via fetch + redirecionamento ao dashboard -->
           <script>
-            (function(){
+            (function () {
               const form = document.querySelector('.login-form');
               const note = document.getElementById('login-notification');
               if (!form) return;
 
-              function show(text, type='info'){
+              function show(text, type = 'info') {
                 note.style.display = 'block';
                 note.textContent = text;
-                if(type === 'error'){
+                if (type === 'error') {
                   note.style.background = '#ffe6e6'; note.style.color = '#6b0303';
                 } else {
                   note.style.background = '#e6f7ff'; note.style.color = '#034a6b';
                 }
               }
 
-              form.addEventListener('submit', async function(e){
+              form.addEventListener('submit', async function (e) {
                 e.preventDefault();
                 show('Tentando entrar...');
 
                 const data = { email: form.email.value, password: form.password.value };
 
-                try{
+                try {
                   const resp = await fetch('/login', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
                     body: JSON.stringify(data)
                   });
 
-                  if(resp.ok){
+                  if (resp.ok) {
                     const json = await resp.json();
                     show(json.message || 'Login bem-sucedido');
                     // redireciona para o dashboard se o backend indicar
-                    if(json.redirect){
+                    if (json.redirect) {
                       setTimeout(() => { window.location.href = json.redirect; }, 800);
                     }
                   } else {
                     let errText = 'Erro no login.';
                     try { const ejson = await resp.json(); errText = ejson.message || errText; }
-                    catch(ex){ const txt = await resp.text(); if(txt) errText = txt; }
+                    catch (ex) { const txt = await resp.text(); if (txt) errText = txt; }
                     show(errText, 'error');
                   }
-                } catch(err){
+                } catch (err) {
                   console.error('Erro no fetch de login:', err);
-                  show('Falha na conexão com o servidor.', 'error');
+                  show('O Email ou a senha está incorreto.', 'error');
                 }
               });
             })();
@@ -136,4 +138,5 @@
     </div>
   </section>
 </body>
+
 </html>
