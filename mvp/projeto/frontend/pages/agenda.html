@@ -1,133 +1,145 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ManUp - Minha Agenda</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Roboto:wght@400;500&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ManUp - Minha Agenda</title>
 
-    <link rel="stylesheet" href="../cstop/style.css" />
-    <link rel="stylesheet" href="../cstop/agenda.css" />
-  </head>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Roboto:wght@400;500&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
-  <body>
-    <div class="app-container">
-      <header class="app-header">
-        <div class="logo">ManUp</div>
-        <div class="user-menu">
-          <span>Olá, <strong>João!</strong></span>
-          <a href="../pages/login.html" class="btn-logout">Sair</a>
-        </div>
-      </header>
+  <link rel="stylesheet" href="../cstop/style.css" />
+  <link rel="stylesheet" href="../cstop/agenda.css" />
+</head>
 
-      <main class="app-content">
-        <section class="page-header">
-          <h2>Minha Agenda</h2>
-          <button class="btn-primary" id="open-modal-btn">
-            <span class="material-symbols-outlined">add_circle</span>
-            Adicionar Compromisso
-          </button>
-        </section>
-
-        <section class="agenda-list" id="agenda-list-container">
-          
-          <div class="agenda-item pending">
-            <div class="item-info">
-              <h3>Consulta com Clínico Geral</h3>
-              <p>
-                <span class="material-symbols-outlined">calendar_today</span>
-                Data: 20/11/2025
-              </p>
-            </div>
-            <div class="item-status">Pendente</div>
-            <div class="item-actions">
-              <button
-                class="btn-action btn-complete"
-                title="Concluir compromisso"
-              >
-                <span class="material-symbols-outlined">check_circle</span>
-              </button>
-              <button class="btn-action btn-undo" title="Desfazer">
-                <span class="material-symbols-outlined">undo</span>
-              </button>
-              <button class="btn-action btn-delete" title="Excluir compromisso">
-                <span class="material-symbols-outlined">delete</span>
-              </button>
-            </div>
-          </div>
-
-          <div class="agenda-item pending">
-            <div class="item-info">
-              <h3>Exame de Sangue</h3>
-              <p>
-                <span class="material-symbols-outlined">calendar_today</span>
-                Data: 02/12/2025
-              </p>
-            </div>
-            <div class="item-status">Pendente</div>
-            <div class="item-actions">
-              <button
-                class="btn-action btn-complete"
-                title="Concluir compromisso"
-              >
-                <span class="material-symbols-outlined">check_circle</span>
-              </button>
-              <button class="btn-action btn-undo" title="Desfazer">
-                <span class="material-symbols-outlined">undo</span>
-              </button>
-              <button class="btn-action btn-delete" title="Excluir compromisso">
-                <span class="material-symbols-outlined">delete</span>
-              </button>
-            </div>
-          </div>
-
-        </section>
-      </main>
-    </div><footer class="app-footer">
-      <div class="footer-content">
-        <p>&copy; 2025 ManUp. Um projeto MVP Saúde do Homem - UNINASSAU.</p>
+<body>
+  <div class="app-container">
+    <header class="app-header">
+      <a href="dashboard.html" class="logo">ManUp</a>
+      <div class="user-menu">
+        <span>Olá, <strong class="nome-usuario">João!</strong><strong>!</strong></span>
+        <a href="../pages/login.html" class="btn-logout">Sair</a>
       </div>
-    </footer>
+    </header>
 
-    <div class="modal-overlay" id="agenda-modal">
-      <div class="modal-content">
-        <button class="modal-close-btn" id="close-modal-btn">
-          <span class="material-symbols-outlined">close</span>
+    <main class="app-content">
+      <section class="page-header">
+        <h2>Minha Agenda</h2>
+        <button class="btn-primary" id="open-modal-btn">
+          <span class="material-symbols-outlined">add_circle</span>
+          Adicionar Compromisso
         </button>
+      </section>
 
-        <h3>Adicionar Novo Compromisso</h3>
-
-        <form id="agenda-form">
-          <div class="modal-form-group">
-            <label for="titulo">Título do Compromisso</label>
-            <input
-              type="text"
-              id="titulo"
-              placeholder="Ex: Clínico Geral, Exame de Sangue"
-              required
-            />
+      <section class="agenda-list" id="agenda-list-container">
+        <div class="agenda-item pending">
+          <div class="item-info">
+            <h3>Consulta com Clínico Geral</h3>
+            <p>
+              <span class="material-symbols-outlined">calendar_today</span>
+              Data: 20/11/2025
+            </p>
           </div>
-
-          <div class="modal-form-group">
-            <label for="data">Data do Compromisso</label>
-            <input type="date" id="data" required />
+          <div class="item-status">Pendente</div>
+          <div class="item-actions">
+            <button class="btn-action btn-complete" title="Concluir compromisso">
+              <span class="material-symbols-outlined">check_circle</span>
+            </button>
+            <button class="btn-action btn-undo" title="Desfazer">
+              <span class="material-symbols-outlined">undo</span>
+            </button>
+            <button class="btn-action btn-delete" title="Excluir compromisso">
+              <span class="material-symbols-outlined">delete</span>
+            </button>
           </div>
+        </div>
 
-          <button type="submit" class="btn-primary">Salvar Compromisso</button>
-        </form>
-      </div>
+        <div class="agenda-item pending">
+          <div class="item-info">
+            <h3>Exame de Sangue</h3>
+            <p>
+              <span class="material-symbols-outlined">calendar_today</span>
+              Data: 02/12/2025
+            </p>
+          </div>
+          <div class="item-status">Pendente</div>
+          <div class="item-actions">
+            <button class="btn-action btn-complete" title="Concluir compromisso">
+              <span class="material-symbols-outlined">check_circle</span>
+            </button>
+            <button class="btn-action btn-undo" title="Desfazer">
+              <span class="material-symbols-outlined">undo</span>
+            </button>
+            <button class="btn-action btn-delete" title="Excluir compromisso">
+              <span class="material-symbols-outlined">delete</span>
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+  <footer class="app-footer">
+    <div class="footer-content">
+      <p>&copy; 2025 ManUp. Um projeto MVP Saúde do Homem - UNINASSAU.</p>
     </div>
-    
-    <script src="../Script/agenda.js"></script>
-  </body>
+  </footer>
+
+  <div class="modal-overlay" id="agenda-modal">
+    <div class="modal-content">
+      <button class="modal-close-btn" id="close-modal-btn">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+
+      <h3>Adicionar Novo Compromisso</h3>
+
+      <form id="agenda-form">
+        <div class="modal-form-group">
+          <label for="titulo">Título do Compromisso</label>
+          <input type="text" id="titulo" placeholder="Ex: Clínico Geral, Exame de Sangue" required />
+        </div>
+
+        <div class="modal-form-group">
+          <label for="data">Data do Compromisso</label>
+          <input type="date" id="data" required />
+        </div>
+
+        <button type="submit" class="btn-primary">Salvar Compromisso</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="../Script/agenda.js"></script>
+  <script>
+    // Executa assim que a página (HTML, imagens) terminar de carregar
+    window.addEventListener('load', () => {
+
+      // 1. Pega o nome que foi salvo no localStorage (no Passo 2)
+      const nomeSalvo = localStorage.getItem('nomeUsuario');
+
+      // 2. Verifica se o nome realmente existe
+      if (nomeSalvo) {
+
+        // 3. Pega TODOS os elementos que têm a classe "nome-usuario"
+        const elementosNome = document.querySelectorAll('.nome-usuario');
+
+        // 4. Passa por cada um e substitui o texto
+        elementosNome.forEach((elemento) => {
+          elemento.textContent = nomeSalvo;
+        });
+
+      } else {
+        // Opcional: Se não achou o nome, o usuário não logou
+        console.error("Usuário não logado! Nome não encontrado no localStorage.");
+        // Você pode redirecionar de volta ao login se quiser:
+        // window.location.href = '/login.html';
+      }
+    });
+  </script>
+</body>
+
 </html>

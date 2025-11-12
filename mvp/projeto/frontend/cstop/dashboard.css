@@ -35,6 +35,10 @@ body {
     line-height: 1.6;
 }
 
+.app-content {
+    padding: 24px 0 60px;
+}
+
 a {
     text-decoration: none;
     color: inherit;
@@ -147,6 +151,7 @@ a {
     padding: 24px;
     box-shadow: var(--sombra-card);
     transition: all 0.3s ease;
+    display: block; /* garantir que o anchor preencha o card */
 }
 .card:hover {
     transform: translateY(-5px);
