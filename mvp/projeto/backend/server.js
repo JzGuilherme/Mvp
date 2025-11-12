@@ -54,7 +54,10 @@ db.run(`
     }
 });
 
-
+db.run(` CREATE TABLE Agendamento(
+    
+    )
+    `)
 // --- ROTAS DA APLICAÇÃO ---
 
 // Rota principal para servir seu login.html
