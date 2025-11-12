@@ -54,7 +54,8 @@ db.run(`
     }
 });
 
-db.run(` CREATE TABLE Agendamentoid INTEGER PRIMARY KEY AUTOINCREMENT,
+db.run(` CREATE TABLE IF NOT EXISTS agendamentos (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
         user_id INTEGER NOT NULL,
         titulo TEXT NOT NULL,
         data_hora TIMESTAMP NOT NULL,
