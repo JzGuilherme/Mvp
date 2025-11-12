@@ -54,10 +54,20 @@ db.run(`
     }
 });
 
-db.run(` CREATE TABLE Agendamento(
-    
+db.run(` CREATE TABLE Agendamentoid INTEGER PRIMARY KEY AUTOINCREMENT,
+        user_id INTEGER NOT NULL,
+        titulo TEXT NOT NULL,
+        data_hora TIMESTAMP NOT NULL,
+        descricao TEXT,
+        FOREIGN KEY (user_id) REFERENCES usuarios(id)
     )
-    `)
+`, (err) => {
+    if (err) {
+        console.error('Erro ao criar tabela "agendamentos":', err.message);
+    } else {
+        console.log('Tabela "agendamentos" pronta ou já existente.');
+    }
+});
 // --- ROTAS DA APLICAÇÃO ---
 
 // Rota principal para servir seu login.html
@@ -161,6 +171,50 @@ app.post('/login', (req, res) => {
     });
 });
 
+app.post('/api/agendamentos', (req, res) => {
+    console.log("Recebi uma tentativa de adicionar agendamento!");
+    const { user_id, titulo, data_hora, descricao } = req.body;
+
+    if (!user_id || !titulo || !data_hora) {
+        return res.status(400).json({ success: false, message: 'Dados incompletos: user_id, título e data são obrigatórios.' });
+    }
+
+    const sql = 'INSERT INTO agendamentos (user_id, titulo, data_hora, descricao) VALUES (?, ?, ?, ?)';
+
+    db.run(sql, [user_id, titulo, data_hora, descricao], function(err) {
+        if (err) {
+            console.error("ERRO DO SQLITE AO INSERIR AGENDAMENTO:", err.message);
+            return res.status(500).json({ success: false, message: 'Erro ao salvar o agendamento.' });
+        }
+
+        console.log(`SUCESSO: Agendamento criado com ID: ${this.lastID} para o User ID: ${user_id}`);
+        res.status(201).json({ 
+            success: true, 
+            message: 'Agendamento criado com sucesso!', 
+            id: this.lastID 
+        });
+    });
+});
+
+app.get('/api/agendamentos/:user_id', (req, res) => {
+    const user_id = req.params.user_id;
+    console.log(`Buscando agendamentos para o User ID: ${user_id}`);
+
+    const sql = 'SELECT id, titulo, data_hora, descricao FROM agendamentos WHERE user_id = ? ORDER BY data_hora ASC';
+
+    db.all(sql, [user_id], (err, rows) => {
+        if (err) {
+            console.error("ERRO DO SQLITE AO BUSCAR AGENDAMENTOS:", err.message);
+            return res.status(500).json({ success: false, message: 'Erro ao buscar agendamentos.' });
+        }
+
+        console.log(`SUCESSO: Encontrados ${rows.length} agendamentos.`);
+        res.json({ 
+            success: true, 
+            agendamentos: rows 
+        });
+    });
+});
 
 // 6. Iniciar o Servidor
 app.listen(port, () => {
