@@ -25,6 +25,7 @@
     "jsonwebtoken": "^9.0.2",
     "mssql": "^12.1.0",
     "mysql2": "^3.15.3",
+    "nodemailer": "^7.0.10",
     "sqlite3": "^5.1.7"
   }
 }
