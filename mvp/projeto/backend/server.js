@@ -282,13 +282,13 @@ app.post('/solicitar-reset', (req, res) => {
 
                 let info = await transporter.sendMail({
                     // <--- MUDANÇA: Usar o e-mail do .env --->
-                    from: `"Seu Sistema" <${process.env.EMAIL_USER}>`, 
+                    from: `"ManUp" <${process.env.EMAIL_USER}>`, 
                     to: email,
                     subject: 'Redefinição de Senha',
                     html: `
                         <p>Você solicitou uma redefinição de senha.</p>
                         <p>Clique aqui para redefinir a sua senha e cuidar da sua saúde</p>
-                        <a href="${resetLink}">${resetLink}</a>
+                        <a href="${resetLink}">Clique aqui para redefinir!</a>
                     `
                 });
 
