@@ -287,7 +287,7 @@ app.post('/solicitar-reset', (req, res) => {
                     subject: 'Redefinição de Senha',
                     html: `
                         <p>Você solicitou uma redefinição de senha.</p>
-                        <p>Clique neste link para criar uma nova senha (válido por 1 hora):</p>
+                        <p>Clique aqui para redefinir a sua senha e cuidar da sua saúde</p>
                         <a href="${resetLink}">${resetLink}</a>
                     `
                 });
