@@ -6,42 +6,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Redefinir Senha</title>
     <link rel="stylesheet" href="../cstop/style.css" />
+    <link rel="icon" type="image/png" href="../imagens/logo-perfect.jpg"">   
 </head>
 
 <body>
-    <div class="container">
-        <h2>Crie Sua Nova Senha</h2>
+    <div class=" container">
+    <h2>Crie Sua Nova Senha</h2>
 
-        <form id="reset-form">
-            <div class="password-wrapper">
-                <label for="password">Nova Senha:</label>
-                <div class="input-group">
-                    <input type="password" id="password" required />
-                    <button type="button" id="btn-register" class="toggle-password" aria-label="Mostrar senha"
-                        aria-pressed="false">
-                        <img class="eye-icon" src="../imagens/eye-close.png" alt="Ocultar senha" />
-                    </button>
-                </div>
+    <form id="reset-form">
+        <div class="password-wrapper">
+            <label for="password">Nova Senha:</label>
+            <div class="input-group">
+                <input type="password" id="password" required />
+                <button type="button" id="btn-register" class="toggle-password" aria-label="Mostrar senha" aria-pressed="false">
+                    <img class="eye-icon" src="../imagens/eye-close.png" alt="Ocultar senha" />
+                </button>
             </div>
+        </div>
 
-            <div class="password-wrapper">
-                <label for="confirm-password">Confirmar Nova Senha:</label>
-                <div class="input-group">
-                    <input type="password" id="confirm-password" required>
-                    <button type="button" id="btn-register2"class="toggle-password" data-target="confirm-password"
-                        aria-label="Mostrar senha" aria-pressed="false">
-                        <img class="eye-icon" src="../imagens/eye-close.png" alt="Ocultar senha">
-                    </button>
-                </div>
+        <div class="password-wrapper">
+            <label for="confirm-password">Confirmar Nova Senha:</label>
+            <div class="input-group">
+                <input type="password" id="confirm-password" required>
+                <button type="button" id="btn-register2" class="toggle-password" data-target="confirm-password" aria-label="Mostrar senha" aria-pressed="false">
+                    <img class="eye-icon" src="../imagens/eye-close.png" alt="Ocultar senha">
+                </button>
             </div>
-            
+        </div>
+
         <button type="submit">Salvar Nova Senha</button>
         <p id="message" style="color: #6B7280"><strong>Crie uma senha forte!</strong></p>
-    </div>
-    
+        </div>
+
     </form>
 
-    
+
     </div>
 
     <script>
@@ -161,6 +160,6 @@
             }
         });
     </script>
-</body>
+    </body>
 
 </html>

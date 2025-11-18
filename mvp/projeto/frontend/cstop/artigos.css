@@ -33,7 +33,7 @@
 }
 
 .filter-btn.active {
-    background-color: var(--cor-secundaria);
+    background-color: var(--azulescuro);
     color: var(--branco);
     border-color: var(--borda);
 }

@@ -5,83 +5,222 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ManUp - Notícias e Conteúdo</title>
-
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Roboto:wght@400;500&display=swap"
-    rel="stylesheet" />
-  <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
   <!-- carregar variáveis globais antes do css da página -->
   <link rel="stylesheet" href="../cstop/style.css" />
   <link rel="stylesheet" href="../cstop/artigos.css" />
+  <link rel="icon" type="image/png" href="../imagens/MAISLOGO.png"">  
 </head>
 
 <body>
-  <div class="app-container">
-    <header class="app-header">
-      <a href="dashboard.html" class="logo">ManUp</a>
-      <div class="user-menu">
-        <span>Olá, <strong class="nome-usuario"></strong><strong>!</strong></span>
-        <a href="login.html" class="btn-logout">Sair</a>
-      </div>
-    </header>
+  <div class=" app-container">
+  <header class="app-header">
+    <a href="dashboard.html" class="logo">ManUp</a>
+    <div class="user-menu">
+      <span>Olá, <strong class="nome-usuario"></strong><strong>!</strong></span>
+      <a href="login.html" class="btn-logout">Sair</a>
+    </div>
+  </header>
 
-    <main class="app-content">
-      <section class="page-header">
-        <h2>Notícias e Conteúdo</h2>
-      </section>
+  <main class="app-content">
+    <section class="page-header">
+      <h2>Notícias e Conteúdo</h2>
+    </section>
 
-      <div class="topic-filters">
-        <button class="filter-btn">Todos</button>
-        <button class="filter-btn">Nutrição</button>
-        <button class="filter-btn">Saúde Mental</button>
-      </div>
+    <div class="topic-filters">
+      <button class="filter-btn active" data-topic="todos">Todos</button>
+      <button class="filter-btn" data-topic="nutricao">Nutrição</button>
+      <button class="filter-btn" data-topic="saude-mental">Saúde Mental</button>
+    </div>
 
-      <section class="article-list-full" id="article-list-container">
-        <div class="article-card-full">
-          <div class="article-image-full" style="
-                background-image: url('https://source.unsplash.com/random/800x400?nutrition');
-              "></div>
-              
-          <div class="article-content-full">
-            <span class="article-topic">Nutrição</span>
-            <h3>A importância da Vitamina D para a saúde masculina</h3>
-            <p>
-              A vitamina D desempenha um papel crucial na regulação do sistema
-              imunológico e na saúde óssea. Muitos homens têm deficiência sem
-              saber...
-            </p>
-            <a href="#" class="btn-primary-outline">Ler Mais</a>
-          </div>
+    <section class="article-list-full" id="article-list-container">
+
+      <div class="article-card-full" data-topic="nutricao">
+        <div class="article-image-full" style="background-image:url('../imagens/vitaminad.webp'); "></div>
+
+        <div class="article-content-full">
+          <span class="article-topic">Nutrição</span>
+          <h3>A importância da Vitamina D para a saúde masculina</h3>
+          <p>
+            A vitamina D desempenha um papel crucial na regulação do sistema
+            imunológico e na saúde óssea. Muitos homens têm deficiência sem
+            saber...
+          </p>
+          <a href="https://nutrimundo.com.br/vitamina-d-beneficios-para-o-homem-uma-analise-focada-em-saude-masculina/" class="btn-primary-outline">Ler Mais</a>
         </div>
+      </div>
 
-        <div class="article-card-full">
-          <div class="article-image-full" style="
-                background-image: url('https://imgs.search.brave.com/2ujEs4JPYTl6V7MQl4bfK-FyYmvtwnz_zPxFDvnRUhE/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9ob3Nw/aXRhbHNhbnRhbW9u/aWNhLmNvbS5ici93/cC1jb250ZW50L3Vw/bG9hZHMvMjAyMy8x/Mi9lc3RyZXNzZS1l/LXNhdWRlLW1lbnRh/bC1kb3MtaG9tZW5z/LXNpdGUuanBn');
-              "></div>
-          <div class="article-content-full">
-            <span class="article-topic">Saúde Mental</span>
-            <h3>
-              Quebrando o Tabu: Por que homens devem falar sobre ansiedade
-            </h3>
-            <p>
-              A ansiedade não é um sinal de fraqueza. Entenda os sintomas e
-              veja por que buscar ajuda é um ato de força e autocuidado...
-            </p>
-            <a href="#" class="btn-primary-outline">Ler Mais</a>
-          </div>
+
+
+      <div class="article-card-full" data-topic="nutricao">
+
+        <div class="article-image-full" style="background-image:url('../imagens/nutricao.webp'); "></div>
+
+        <div class="article-content-full">
+          <span class="article-topic">Nutrição</span>
+          <h3>Cinco dicas de nutrição que todo homem precisa saber</h3>
+          <p>
+            Os homens gerenciam muitas atividades diárias ao longo da vida, mas muitas vezes ignoram a própria saúde. E, geralmente, um almoço saudável ou uma consulta médica não estão no topo da lista de suas prioridades...
+          </p>
+          <a href="https://www.abbottbrasil.com.br/corpnewsroom/nutrition-health-and-wellness/cinco-dicas-de-nutricao-que-todo-homem-precisa-saber.html" class="btn-primary-outline">Ler Mais</a>
         </div>
-      </section>
-    </main>
+      </div>
+
+      <div class="article-card-full" data-topic="saude-mental">
+        <div class="article-image-full" style="
+  background-image: url('https://imgs.search.brave.com/2ujEs4JPYTl6V7MQl4bfK-FyYmvtwnz_zPxFDvnRUhE/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9ob3Nw/aXRhbHNhbnRhbW9u/aWNhLmNvbS5ici93/cC1jb250ZW50L3Vw/bG9hZHMvMjAyMy8x/Mi9lc3RyZXNzZS1l/LXNhdWRlLW1lbnRh/bC1kb3MtaG9tZW5z/LXNpdGUuanBn');
+ "></div>
+        <div class="article-content-full">
+          <span class="article-topic">Saúde Mental</span>
+          <h3>
+            Quebrando o Tabu: Por que homens devem falar sobre ansiedade
+          </h3>
+          <p>
+            A ansiedade não é um sinal de fraqueza. Entenda os sintomas e
+            veja por que buscar ajuda é um ato de força e autocuidado...
+          </p>
+          <a href="https://qmaisvitta.com.br/saude-mental-e-bem-estar-masculino-quebrando-o-tabu-no-novembro-azul/" class="btn-primary-outline">Ler Mais</a>
+        </div>
+      </div>
+      <div class="article-card-full" data-topic="saude-mental">
+        <div class="article-image-full" style="
+  background-image: url('https://imgs.search.brave.com/IFMHQ0JxKsTc9vOpO3uS9vBYAKHwheUS0u7-xtGB3J0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvMTQ5/NjU5NzU3OC9wdC9m/b3RvL21hbi1lbWJy/YWNpbmctaGlzLWZy/aWVuZC13aG8taXMt/c2hhcmluZy1oaXMt/c3RvcnktYXQtdGhl/LWdyb3VwLXRoZXJh/cHktc2Vzc2lvbi5q/cGc_cz02MTJ4NjEy/Jnc9MCZrPTIwJmM9/V24tMmlpVEg2NDUy/Y1paRm1WMVBqZ3E2/a0tJYzJGZXZTMXpZ/U0lxSWRYYz0');
+ "></div>
+        <div class="article-content-full">
+          <span class="article-topic">Saúde Mental</span>
+          <h3>Saúde mental dos homens em foco diante do aumento de casos de suicídio</h3>
+          <p>
+            Segundo o Ministério da Saúde (DataSUS), o Brasil registrou mais de 107 mil mortes por suicídio entre 2015 e 2022. Um dado chama a atenção: quase 80% das vítimas eram homens...
+          </p>
+          <a href="https://www12.senado.leg.br/radio/1/conexao-senado/2025/09/12/saude-mental-dos-homens-em-foco-diante-do-aumento-de-casos-de-suicidio" class="btn-primary-outline">Ler Mais</a>
+        </div>
+      </div>
+    </section>
+  </main>
   </div>
+
+  <button id="chat-toggle" aria-label="Open chat" class="fixed bottom-7 
+  right-6 bg-blue-500
+  hover:bg-blue-700 
+  text-white font-bold py-2 px-2 rounded-full shadow-lg z-50 focus:outline-none">
+    Chat de apoio
+  </button>
+
+  <div id="chat-widget" class="fixed bottom-20 
+  right-6 w-80 h-96 
+  bg-white border 
+  border-gray-300 
+  rounded-lg shadow-lg z-50 
+  flex flex-col hidden">
+
+    <div class="bg-blue-600 text-white px-4 py-2 rounded-t-lg flex justify-between items-center">
+      <span>Local de apoio virtual</span>
+      <button id="chat-close" aria-label="Close chat" class="text-white">×</button>
+    </div>
+    <div id="chat-messages" class="flex-1 p-4 overflow-y-auto">
+    </div>
+    <div class="p-4 border-t border-gray-300 flex">
+      <input id="chat-input" type="text" placeholder="Digite sua mensagem..." class="flex-1 px-3 py-2 border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+      <button id="chat-send" class="bg-blue-600 
+      hover:bg-blue-700 text-white px-4 py-2 rounded-r-lg">Enviar</button>
+    </div>
+  </div>
+  <script>
+    const toggle = document.getElementById('chat-toggle');
+    const widget = document.getElementById('chat-widget');
+    const closeBtn = document.getElementById('chat-close');
+    const messagesDiv = document.getElementById('chat-messages');
+    const input = document.getElementById('chat-input');
+    const sendBtn = document.getElementById('chat-send');
+
+
+    const responses = {
+      // 1. Palavras-chave Emocionais (Validação) - Aqui eu adicione palavras mais comuns relacionadas a emoções, esse chatbot é focado em apoio psicológico/ apenas apoio, a intenção é que o usuário se sinta acolhido minimamente e ser lembrado de procurar um profissional.
+      'stress': 'Entendo que o estresse pode ser desafiador. Lembre-se sempre que você não pode controlar eventos externos, mas sim você mesmo. Aprenda a lidar com o externo e tente técnicas de respiração profunda ou atividades relaxantes. Lembre-se, isto é apenas um canal de apoio; consulte um profissional para ajuda especializada.',
+      'estresse': 'Entendo que o estresse pode ser desafiador. Tente lembrar sempre que você não pode controlar eventos externos, mas sim você mesmo. Aprenda a lidar com o externo e tente técnicas de respiração profunda ou atividades relaxantes. Lembre-se, este é apenas apoio; consulte um profissional para ajuda especializada.',
+      'ansiedade': 'A ansiedade é comum, mas pode ser gerenciada. Cuide de você mesmo, faça exercícios fisícos e cuidado com excesso de ideias e informações sobre um assunto que você esteja interessado, pois isso pode lhe prejudicar posteriormente. Isto aqui oferece apoio inicial; busque atendimento profissional para tratamento adequado.',
+      'ansioso': 'A ansiedade é comum, mas pode ser gerenciada. Cuide de você mesmo, faça exercícios fisícos e cuidado com excesso de ideias e informações sobre um assunto que você esteja interessado, pois isso pode lhe prejudicar posteriormente. Isto aqui oferece apoio inicial; busque atendimento profissional para tratamento adequado.',
+      'depressão': 'Se você está se sentindo deprimido, é importante falar com alguém.  Isto aqui é um espaço de apoio, mas um psicólogo pode fornecer o suporte e o atendimento necessário.',
+      'depressao': 'Se você está se sentindo deprimido, é importante falar com alguém.  Isto aqui é um espaço de apoio, mas um psicólogo pode fornecer o suporte e o atendimento necessário.',
+      'triste': 'Sinto muito que você esteja se sentindo assim. Compartilhar sentimentos é um primeiro passo. Lembre-se de que iste é somente apoio, e não substitui terapia profissional.',
+      'sozinho': 'A solidão é um sentimento difícil. Conectar-se com amigos, família ou grupos de interesse pode ajudar. E lembre-se, buscar apoio profissional é um sinal de força.',
+      'raiva': 'Sentir raiva é normal, mas é importante entender a raiz dela, e saber enxergar o nível dessa sua emoção para a situação. Tente identificar o gatilho. Falar sobre isso com um profissional pode ajudar a gerenciar essa emoção.',
+
+      // 3. Palavras-chave de Contexto (Universidade/Vida)
+      'sono': 'Problemas de sono podem afetar a saúde mental. Estabeleça uma rotina e evite telas antes de dormir. Consulte um especialista se persistir.',
+      'relacionamento': 'Relacionamentos podem ser fonte de estresse. Comunicação aberta é chave. Este chatbot apoia, mas terapia de casal pode ajudar.',
+      'trabalho': 'O equilíbrio entre trabalho e vida pessoal é importante. Defina limites e cuide de si. Busque apoio profissional se necessário.',
+      'família': 'Família é importante, mas conflitos podem surgir. Tente diálogo e empatia. Iste é um apoio inicial; considere terapia familiar, para poder lhe ajudar de alguma forma.',
+      'autoestima': 'Trabalhar a autoestima leva tempo. Foque em suas qualidades positivas. Eu consigo lhe incentivar, mas psicólogos especializados ajudam.',
+      'motivacao': 'Falta de motivação pode ser sinal de algo maior. Pequenos passos ajudam, da mesma forma que você não pode entrar na academia e ir pegando muito peso, no geral você também não pode estar fazendo isso. Lembre-se, isto é apoio; procure ajuda profissional.',
+      'prova': 'A pressão das provas e do meio acadêmico é real. Tente organizar seu tempo de estudo e faça pausas. Lidar com essa ansiedade é importante.',
+      'faculdade': 'A vida universitária pode ser estressante. Gerenciar o tempo entre estudos, trabalho e vida social é um desafio. Estamos aqui para apoiar e te incentivar a ter atitudes que vão agregar algo de útil na sua vida.',
+      'procrastinação': 'A procrastinação muitas vezes está ligada à ansiedade ou sobrecarga. Tente quebrar tarefas grandes em passos menores. Você não está sozinho nisso, procure por uma rede de apoio que possa lhe ajudar.',
+      'padrao': 'Desculpa, mas infelizmente eu não consegui identificar o que você quis dizer. Eu sou uma versão em treinamento, em breve poderei te ajudar ainda mais! Lembre-se, eu não substituo um atendimento profissional. Recomendo que você procure um psicólogo ou outro profissional de saúde mental para obter ajuda especializada.'
+    };
+    ;
+
+    // Função para adicionar mensagem ao chat
+    function addMessage(text, sender) {
+      const messageDiv = document.createElement('div');
+      messageDiv.className = sender === 'user' ? 'mb-2 text-right' : 'mb-2 text-left';
+      messageDiv.innerHTML = `<div class="inline-block p-2 rounded-lg ${sender === 'user' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-800'}">${text}</div>`;
+      messagesDiv.appendChild(messageDiv);
+      messagesDiv.scrollTop = messagesDiv.scrollHeight;
+    }
+
+    // Função para gerar resposta do bot
+    function getBotResponse(userMessage) {
+      const lowerMessage = userMessage.toLowerCase();
+      for (const keyword in responses) {
+        if (lowerMessage.includes(keyword)) {
+          return responses[keyword];
+        }
+      }
+      return responses['padrao'];
+    }
+
+    // Essa é a função para enviar mensagem, como o próprio nome já diz
+    function sendMessage() {
+      const message = input.value.trim();
+      if (message) {
+        addMessage(message, 'user');
+        input.value = '';
+        setTimeout(() => {
+          const botResponse = getBotResponse(message);
+          addMessage(botResponse, 'bot');
+        }, 1000); // Simula delay
+      }
+    }
+
+    // É basicamente a listagem dos eventos, tendeu peão?
+    toggle.addEventListener('click', () => {
+      widget.classList.toggle('hidden');
+      if (!widget.classList.contains('hidden')) {
+        // Mensagem inicial do bot
+        if (messagesDiv.children.length === 0) {
+          addMessage('Olá! Sou um chatbot de apoio psicológico para homens. Posso oferecer suporte inicial, mas lembre-se: eu não substituo um atendimento profissional. Como posso lhe incentivar para o seu bem hoje?', 'bot');
+        }
+      }
+    });
+    closeBtn.addEventListener('click', () => widget.classList.add('hidden'));
+    sendBtn.addEventListener('click', sendMessage);
+    input.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') sendMessage();
+    });
+  </script>
+
   <footer class="app-footer">
     <div class="footer-content">
       <p>&copy; 2025 ManUp. Um projeto MVP Saúde do Homem - UNINASSAU.</p>
     </div>
   </footer>
 
-  <script src="/Script/noticias.js"></script>
+  <script src="../Script/noticias.js"></script>
   <script>
     // Executa assim que a página (HTML, imagens) terminar de carregar
     window.addEventListener('load', () => {
@@ -108,6 +247,6 @@
       }
     });
   </script>
-</body>
+  </body>
 
 </html>
