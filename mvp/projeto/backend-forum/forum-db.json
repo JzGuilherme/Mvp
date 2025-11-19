@@ -1,0 +1,20 @@
+{
+  "posts": [
+    {
+      "id": "1763595937851",
+      "text": "a",
+      "author": "Jorge",
+      "createdAt": "2025-11-19T23:45:37.851Z",
+      "likeCount": 1,
+      "replies": []
+    },
+    {
+      "id": "1763595952445",
+      "text": "gabriel",
+      "author": "Jorge",
+      "createdAt": "2025-11-19T23:45:52.445Z",
+      "likeCount": 1,
+      "replies": []
+    }
+  ]
+}
