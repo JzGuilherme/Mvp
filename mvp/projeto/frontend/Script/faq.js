@@ -4,7 +4,7 @@
  */
 
 // CONFIGURAÇÃO: Aponta para o seu novo servidor
-const API_URL = 'https://backend-forum-31ax.onrender.com/api/posts'; 
+const API_URL = 'http://localhost:3001/api/posts'; 
 const POSTS_PER_PAGE = 10;
 const LIKE_STORAGE_PREFIX = 'manup_liked_post_';
 
