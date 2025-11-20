@@ -3,7 +3,6 @@
  * @description Gerencia a interatividade da página de Agenda, 
  * incluindo a abertura/fechamento do modal e as ações de 
  * Criar, Concluir, Desfazer e Excluir compromissos.
- 
  *
  * Protocolo de Visibilidade (CSS):
  * - Item '.pending':   Mostra [Concluir], Esconde [Desfazer]
@@ -13,7 +12,6 @@
 document.addEventListener('DOMContentLoaded', () => {
   
   // --- Seletores do DOM ---
-  // Mapeamento de todos os elementos interativos da página
   const openModalBtn = document.getElementById('open-modal-btn');
   const closeModalBtn = document.getElementById('close-modal-btn');
   const modal = document.getElementById('agenda-modal');
@@ -22,73 +20,54 @@ document.addEventListener('DOMContentLoaded', () => {
   const dateInput = document.getElementById('data');
   const listContainer = document.getElementById('agenda-list-container');
 
-  // --- Funções de Controle do Modal ---
+  // Novos Modais (Confirmação e Sucesso)
+  const confirmModal = document.getElementById('confirm-modal');
+  const btnConfirmYes = document.getElementById('btn-confirm-yes');
+  const btnConfirmCancel = document.getElementById('btn-confirm-cancel');
   
-  /**
-   * Torna o modal de "Adicionar Compromisso" visível.
-   * (Esta função corrige o bug do 'display: none' vs. 'display: flex')
-   */
-  const openModal = () => {
-    modal.style.display = 'flex';
+  const successModal = document.getElementById('success-modal');
+  const btnSuccessOk = document.getElementById('btn-success-ok');
+
+  // Variável para guardar qual item será excluído
+  let itemToDelete = null;
+
+  // --- Funções Auxiliares de Modal ---
+
+  const openModalGeneric = (modalElement) => {
+    modalElement.style.display = 'flex';
   };
 
-  /**
-   * Oculta o modal.
-   */
-  const closeModal = () => {
-    modal.style.display = 'none';
+  const closeModalGeneric = (modalElement) => {
+    modalElement.style.display = 'none';
   };
 
-  // --- Event Listeners do Modal ---
+  // --- Event Listeners do Modal de Formulário ---
   
-  // Abre o modal ao clicar em "Adicionar Compromisso"
-  openModalBtn.addEventListener('click', openModal);
+  openModalBtn.addEventListener('click', () => openModalGeneric(modal));
+  closeModalBtn.addEventListener('click', () => closeModalGeneric(modal));
   
-  // Fecha o modal ao clicar no 'X'
-  closeModalBtn.addEventListener('click', closeModal);
-  
-  // Fecha o modal se o usuário clicar fora da caixa (no overlay)
-  modal.addEventListener('click', (event) => {
-    if (event.target === modal) {
-      closeModal();
-    }
+  // Fecha ao clicar fora
+  window.addEventListener('click', (event) => {
+    if (event.target === modal) closeModalGeneric(modal);
+    if (event.target === confirmModal) closeModalGeneric(confirmModal);
+    if (event.target === successModal) closeModalGeneric(successModal);
   });
 
   // --- Lógica Principal da Agenda ---
 
-  /**
-   * Manipulador para o envio do formulário de novo compromisso.
-   * Cria e adiciona um novo item à lista.
-   * @param {Event} event - O objeto do evento de submit.
-   */
   agendaForm.addEventListener('submit', (event) => {
-    // 1. Previne o recarregamento padrão da página
     event.preventDefault();
-
-    // 2. Obter os valores dos inputs
     const title = titleInput.value;
-    const rawDate = dateInput.value; // Formato: "AAAA-MM-DD"
+    const rawDate = dateInput.value; 
 
-    // 3. Formatar a data para o padrão pt-BR
-    // (Esta seção corrige o bug da 'dateParts' indefinida)
-    const dateParts = rawDate.split('-'); // ["AAAA", "MM", "DD"]
+    const dateParts = rawDate.split('-'); 
     const formattedDate = new Date(dateParts[0], dateParts[1] - 1, dateParts[2])
                             .toLocaleDateString('pt-BR', { timeZone: 'UTC' });
 
-    // 4. Criar o novo elemento (item da agenda)
     const newItem = document.createElement('div');
     newItem.classList.add('agenda-item');
-    newItem.classList.add('pending'); // Estado inicial é "Pendente"
+    newItem.classList.add('pending');
 
-    /* * ==================================================================
-     * ↓↓↓ ESTRUTURA DO NOVO ITEM  ↓↓↓
-     * ==================================================================
-     *
-     * O HTML do novo item agora inclui os TRÊS botões de ação:
-     * 'btn-complete' (Concluir)
-     * 'btn-undo' (Desfazer) - será oculto pelo CSS por padrão
-     * 'btn-delete' (Excluir)
-     */
     newItem.innerHTML = `
       <div class="item-info">
         <h3>${title}</h3>
@@ -113,91 +92,74 @@ document.addEventListener('DOMContentLoaded', () => {
       </div>
     `;
 
-    // 5. Adicionar o novo item ao container da lista
     listContainer.appendChild(newItem);
-
-    // 6. Limpar o formulário e fechar o modal
     agendaForm.reset(); 
-    closeModal();       
+    closeModalGeneric(modal); // Fecha o formulário
+    
+    // Mostra o modal de sucesso
+    document.getElementById('success-message').textContent = 'Compromisso agendado com sucesso!';
+    openModalGeneric(successModal);
   });
 
-  /* * ==================================================================
-   * ↓↓↓ DELEGAÇÃO DE EVENTOS  ↓↓↓
-   * ==================================================================
-   *
-   * Um único listener no 'listContainer' gerencia todos os cliques
-   * nos botões de ação dos itens, incluindo os recém-criados.
-   * Agora "escuta" também o '.btn-undo'.
-   */
-  
-  /**
-   * Manipulador de cliques para todas as ações dentro da lista de agenda.
-   * @param {Event} event - O objeto do evento de clique.
-   */
-  listContainer.addEventListener('click', (event) => {
-    // Identifica o elemento exato que foi clicado
-    const clickedElement = event.target;
+  // Fechar modal de sucesso
+  btnSuccessOk.addEventListener('click', () => closeModalGeneric(successModal));
 
-    // Procura pelo botão de "Concluir" mais próximo
+
+  // --- Delegação de Eventos (Lista) ---
+  
+  listContainer.addEventListener('click', (event) => {
+    const clickedElement = event.target;
     const completeButton = clickedElement.closest('.btn-complete');
-    // Procura pelo botão de "Excluir" mais próximo
     const deleteButton = clickedElement.closest('.btn-delete');
-    // Procura pelo botão de "Desfazer" mais próximo
     const undoButton = clickedElement.closest('.btn-undo');
 
-    // Chama a função de manipulação correta
     if (completeButton) {
       handleComplete(completeButton);
     } else if (deleteButton) {
-      handleDelete(deleteButton);
+      handleDeleteRequest(deleteButton); // Chama a nova função de solicitação
     } else if (undoButton) {
       handleUndo(undoButton);
     }
   });
 
-  /**
-   * Ação de "Concluir" um item.
-   * Apenas muda o estado para 'Concluído'.
-   * @param {HTMLElement} button - O botão 'Concluir' que foi clicado.
-   */
   function handleComplete(button) {
     const item = button.closest('.agenda-item');
     const status = item.querySelector('.item-status');
-
     item.classList.remove('pending');
     item.classList.add('completed');
     status.textContent = 'Concluído';
-    // O CSS cuidará de esconder este botão e mostrar o 'Desfazer'
   }
 
-  /**
-   * Ação de "Desfazer" um item.
-   * Apenas reverte o estado para 'Pendente'.
-   * @param {HTMLElement} button - O botão 'Desfazer' que foi clicado.
-   */
   function handleUndo(button) {
     const item = button.closest('.agenda-item');
     const status = item.querySelector('.item-status');
-
     item.classList.remove('completed');
     item.classList.add('pending');
     status.textContent = 'Pendente';
-    // O CSS cuidará de esconder este botão e mostrar o 'Concluir'
   }
 
   /**
-   * Ação de "Excluir" um item.
-   * Pede confirmação e remove o item do DOM.
-   * @param {HTMLElement} button - O botão 'Excluir' que foi clicado.
+   * Inicia o processo de exclusão (abre o modal).
    */
-  function handleDelete(button) {
+  function handleDeleteRequest(button) {
     const item = button.closest('.agenda-item');
-    
-    // Boa prática: Pedir confirmação antes de uma ação destrutiva.
-    if (confirm('Tem certeza que deseja excluir este compromisso?')) {
-      // Remove o item do DOM (da tela)
-      item.remove();
-    }
+    itemToDelete = item; // Guarda a referência do item
+    openModalGeneric(confirmModal); // Abre a confirmação
   }
+
+  // --- Lógica do Modal de Confirmação (Excluir) ---
+
+  btnConfirmYes.addEventListener('click', () => {
+    if (itemToDelete) {
+      itemToDelete.remove(); // Exclui de verdade
+      itemToDelete = null; // Limpa a referência
+      closeModalGeneric(confirmModal);
+    }
+  });
+
+  btnConfirmCancel.addEventListener('click', () => {
+    itemToDelete = null; // Cancela a ação
+    closeModalGeneric(confirmModal);
+  });
 
 });

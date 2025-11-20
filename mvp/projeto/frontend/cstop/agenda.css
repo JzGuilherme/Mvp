@@ -2,7 +2,7 @@
  * @file agenda.css
  * @description Estilos para a página de Agenda (Tela 4) e
  * o modal de "Adicionar Compromisso".
- * @author Equipe ManUp (Assistido por Alfred)
+
  *
  * Depende de variáveis CSS (ex: var(--verde-principal))
  * definidas no arquivo CSS mestre (ex: style.css).
@@ -124,7 +124,7 @@
     align-items: center;
 }
 
-/* --- Caixa Branca (Conteúdo) --- */
+/* --- Caixa Branca (Conteúdo Padrão) --- */
 .modal-content {
     position: relative;
     background-color: #FFFFFF;
@@ -135,11 +135,67 @@
     max-width: 500px;
 }
 
+/* --- Modal Pequeno (Para Alertas/Confirmações) --- */
+.modal-content.modal-sm {
+    max-width: 400px;
+    padding: 32px;
+    text-align: center;
+}
+
 .modal-content h3 {
     font-family: var(--fonte-titulo);
     font-size: 24px;
     margin-bottom: 24px;
     text-align: center;
+}
+
+.modal-content p {
+    font-size: 16px;
+    color: var(--texto-secundario);
+    margin-bottom: 32px;
+    line-height: 1.5;
+}
+
+/* --- Ações do Modal (Botões) --- */
+.modal-actions {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+}
+
+/* Botão Secundário (Cancelar) */
+.btn-secondary {
+    padding: 12px 24px;
+    font-family: var(--fonte-titulo);
+    font-weight: 600;
+    font-size: 16px;
+    background-color: var(--fundo-claro);
+    color: var(--texto-secundario);
+    border: 1px solid var(--borda);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background-color: #E0E0E0;
+}
+
+/* Botão de Perigo (Excluir) */
+.btn-danger {
+    background-color: #FFEBEE;
+    color: #D32F2F;
+    border: 1px solid #FFCDD2;
+    padding: 12px 24px;
+    font-family: var(--fonte-titulo);
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-danger:hover {
+    background-color: #FFCDD2;
 }
 
 /* --- Botão de Fechar (X) --- */
@@ -192,6 +248,7 @@
 #agenda-form .btn-primary {
     width: 100%;
     margin-top: 16px;
+    justify-content: center; /* Centraliza o texto do botão */
 }
 
 /* ===================================================
@@ -294,8 +351,7 @@
 
 /* ===================================================
  * LAYOUT STICKY FOOTER (Global)
- * 
- * ===================================================
+ * * ===================================================
  *
  * Corrige o layout para que o rodapé (footer)
  * permaneça na parte inferior da tela, mesmo em páginas curtas.

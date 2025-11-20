@@ -89,6 +89,7 @@
     </div>
   </footer>
 
+  <!-- MODAL DE FORMULÁRIO (Adicionar) -->
   <div class="modal-overlay" id="agenda-modal">
     <div class="modal-content">
       <button class="modal-close-btn" id="close-modal-btn">
@@ -112,6 +113,30 @@
       </form>
     </div>
   </div>
+
+  <!-- NOVO: MODAL DE CONFIRMAÇÃO (Excluir) -->
+  <div class="modal-overlay" id="confirm-modal">
+    <div class="modal-content modal-sm">
+      <h3>Tem certeza?</h3>
+      <p>Você deseja realmente excluir este compromisso? Esta ação não pode ser desfeita.</p>
+      <div class="modal-actions">
+        <button class="btn-secondary" id="btn-confirm-cancel">Cancelar</button>
+        <button class="btn-danger" id="btn-confirm-yes">Excluir</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- NOVO: MODAL DE SUCESSO (Aviso) -->
+  <div class="modal-overlay" id="success-modal">
+    <div class="modal-content modal-sm">
+      <h3 style="color: var(--verde-principal);">Sucesso!</h3>
+      <p id="success-message">Compromisso adicionado com sucesso.</p>
+      <div class="modal-actions">
+        <button class="btn-primary" id="btn-success-ok" style="width: 100px;">OK</button>
+      </div>
+    </div>
+  </div>
+
 
   <button id="chat-toggle" aria-label="Open chat" class="fixed bottom-7 
   right-6 bg-blue-500
