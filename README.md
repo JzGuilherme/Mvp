@@ -3,9 +3,15 @@
 A web app focused on engaging the male audience in self-care, breaking the barrier of procrastination through health management tools.
 
 # PROJECT STATUS
-IN DEVELOPMENT
+FINISHED
 
 The project is a web app (not a website or blog) that requires user authentication (login/registration). The focus is on delivering a functional prototype that solves the pain points of our persona (the “procrastinating man”), according to the requirements of the 1st MVP Men's Health Call for Proposals.
+
+# IP do Site
+
+Para acessar a versão em desenvolvimento/teste do ManUp, utilize o seguinte endereço IP: **13.59.42.253**
+
+
 
 # CONCEPT AND OBJECTIVE
 
